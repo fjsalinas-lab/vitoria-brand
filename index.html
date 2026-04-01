@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitoria — Brand Bible</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ═══ Core Palette — Charcoal & Copper ═══ */
+      --coal: #1c2127;
+      --coal-soft: #2e333a;
+      --slate: #4a5260;
+      --pewter: #7a8291;
+      --silver: #b0b5be;
+      --mist: #d9dce1;
+      --frost: #eef0f2;
+      --snow: #f8f9fa;
+      --paper: #fdfdfb;
+
+      /* Signature — Copper */
+      --copper: #b5704d;
+      --copper-deep: #8f5636;
+      --copper-light: #d4956e;
+      --copper-glow: rgba(181,112,77,0.1);
+      --copper-subtle: rgba(181,112,77,0.05);
+
+      /* Functional */
+      --sea: #3a6678;
+      --sea-soft: rgba(58,102,120,0.1);
+      --success: #3d7a5a;
+      --success-soft: rgba(61,122,90,0.1);
+      --error: #944040;
+      --error-soft: rgba(148,64,64,0.1);
+      --warning: #8a7030;
+      --warning-soft: rgba(138,112,48,0.1);
+
+      /* Typography */
+      --serif: 'Libre Baskerville', 'Georgia', serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+      /* Spacing scale (4px base) */
+      --sp-1: 0.25rem;  /* 4px */
+      --sp-2: 0.5rem;   /* 8px */
+      --sp-3: 0.75rem;  /* 12px */
+      --sp-4: 1rem;     /* 16px */
+      --sp-6: 1.5rem;   /* 24px */
+      --sp-8: 2rem;     /* 32px */
+      --sp-10: 2.5rem;  /* 40px */
+      --sp-12: 3rem;    /* 48px */
+      --sp-16: 4rem;    /* 64px */
+      --sp-20: 5rem;    /* 80px */
+      --sp-24: 6rem;    /* 96px */
+
+      /* Border radius */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 10px;
+      --radius-xl: 14px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--coal);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--copper); color: white; }
+
+    /* ─── Nav ─── */
+    .bible-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(253,253,251,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--frost);
+      padding: 0 3rem;
+    }
+
+    .bible-nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .bible-nav-logo {
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      color: var(--coal);
+    }
+
+    .bible-nav-logo em { font-style: italic; }
+
+    .bible-nav-tag {
+      font-family: var(--sans);
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--copper);
+      background: var(--copper-glow);
+      padding: 0.25rem 0.625rem;
+      border-radius: 3px;
+    }
+
+    .bible-nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--pewter);
+    }
+
+    .bible-nav-links a {
+      text-decoration: none;
+      color: var(--pewter);
+      transition: color 0.2s;
+    }
+
+    .bible-nav-links a:hover { color: var(--copper); }
+
+    /* ─── Layout ─── */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 3rem; }
+    .wide { max-width: 1120px; margin: 0 auto; padding: 0 3rem; }
+
+    section { padding: var(--sp-24) 0; }
+
+    .rule {
+      width: 100%;
+      height: 1px;
+      background: var(--mist);
+      position: relative;
+    }
+
+    .rule::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 48px;
+      height: 1px;
+      background: var(--copper);
+    }
+
+    /* ─── Typography base ─── */
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
+    h1 { font-size: 3.75rem; line-height: 1.12; letter-spacing: -0.01em; }
+    h2 { font-size: 2.25rem; line-height: 1.2; margin-bottom: var(--sp-6); }
+    h3 { font-size: 1.375rem; line-height: 1.35; margin-bottom: var(--sp-3); }
+
+    .label {
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    p { font-size: 1.0625rem; color: var(--slate); max-width: 620px; }
+    p + p { margin-top: 1rem; }
+
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade { animation: fadeUp 0.7s ease-out forwards; }
+    .d1 { animation-delay: 0.1s; opacity: 0; }
+    .d2 { animation-delay: 0.2s; opacity: 0; }
+    .d3 { animation-delay: 0.35s; opacity: 0; }
+    .d4 { animation-delay: 0.5s; opacity: 0; }
+
+    /* ─── Cover ─── */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: var(--coal);
+      color: var(--frost);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -20%;
+      width: 60%;
+      height: 80%;
+      background: radial-gradient(ellipse, rgba(181,112,77,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 50%;
+      height: 60%;
+      background: radial-gradient(ellipse, rgba(58,102,120,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cover .label { color: var(--copper-light); margin-bottom: var(--sp-10); letter-spacing: 0.25em; }
+
+    .cover h1 {
+      font-size: 6rem;
+      color: var(--frost);
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .cover .wm { color: var(--copper-light); font-style: italic; }
+
+    .cover .tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--silver);
+      margin-top: 0.75rem;
+    }
+
+    .cover-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--copper);
+      margin: var(--sp-10) auto;
+      opacity: 0.6;
+    }
+
+    .cover p {
+      font-size: 1rem;
+      color: var(--pewter);
+      max-width: 400px;
+      line-height: 1.8;
+    }
+
+    .cover-footer {
+      position: absolute;
+      bottom: 3rem;
+      font-size: 0.6875rem;
+      color: var(--slate);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ─── TOC ─── */
+    .toc {
+      padding: var(--sp-24) 0;
+      border-bottom: 1px solid var(--frost);
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-8);
+      margin-top: var(--sp-12);
+    }
+
+    .toc-item {
+      display: flex;
+      gap: var(--sp-4);
+      align-items: baseline;
+      text-decoration: none;
+      color: var(--coal);
+      padding: var(--sp-4) 0;
+      border-bottom: 1px solid var(--frost);
+      transition: border-color 0.2s;
+    }
+
+    .toc-item:hover { border-bottom-color: var(--copper); }
+
+    .toc-num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--silver);
+      flex-shrink: 0;
+      width: 2.5rem;
+    }
+
+    .toc-label {
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+    }
+
+    /* ─── DNA ─── */
+    .dna-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-8);
+      margin: var(--sp-12) 0;
+    }
+
+    .dna-card {
+      padding: var(--sp-10);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--mist);
+      background: var(--snow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dna-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--copper);
+      opacity: 0.4;
+    }
+
+    .dna-num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 3rem;
+      color: var(--mist);
+      line-height: 1;
+      margin-bottom: var(--sp-4);
+    }
+
+    .dna-card h4 {
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      color: var(--coal);
+      margin-bottom: var(--sp-2);
+    }
+
+    .dna-card p { font-size: 0.9375rem; color: var(--pewter); max-width: none; }
+
+    /* ─── Palette ─── */
+    .palette-strip {
+      display: flex;
+      margin: var(--sp-12) 0 var(--sp-6);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .strip-sw {
+      flex: 1;
+      aspect-ratio: 0.85;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0.75rem;
+      font-family: var(--mono);
+      font-size: 0.625rem;
+      transition: flex 0.3s ease;
+      cursor: default;
+    }
+
+    .strip-sw:hover { flex: 1.5; }
+    .strip-name { font-family: var(--sans); font-size: 0.5625rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.2rem; }
+    .strip-hex { opacity: 0.65; }
+
+    .accent-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: var(--sp-6);
+      margin: var(--sp-10) 0;
+    }
+
+    .accent-chip { text-align: center; }
+
+    .accent-dot {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      margin: 0 auto var(--sp-3);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .accent-label { font-size: 0.8125rem; font-weight: 500; color: var(--coal); }
+    .accent-hex { font-family: var(--mono); font-size: 0.6875rem; color: var(--pewter); margin-top: 0.15rem; }
+
+    .color-usage {
+      margin-top: var(--sp-10);
+      padding: var(--sp-8);
+      background: var(--snow);
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-lg);
+    }
+
+    .color-usage h4 {
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: var(--sp-6);
+    }
+
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-6);
+    }
+
+    .usage-item h5 {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--coal);
+      margin-bottom: var(--sp-1);
+    }
+
+    .usage-item p {
+      font-size: 0.875rem;
+      color: var(--pewter);
+      max-width: none;
+    }
+
+    /* Contrast table */
+    .contrast-grid {
+      margin-top: var(--sp-10);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+    }
+
+    .contrast-card {
+      border-radius: var(--radius-md);
+      padding: var(--sp-6);
+      text-align: center;
+      min-height: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contrast-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-2);
+      opacity: 0.6;
+    }
+
+    .contrast-ratio {
+      font-family: var(--mono);
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .contrast-pass {
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: var(--sp-1);
+    }
+
+    /* ─── Type Specimen ─── */
+    .specimen { margin: var(--sp-12) 0; }
+
+    .spec-row {
+      display: flex;
+      align-items: baseline;
+      padding: var(--sp-8) 0;
+      border-bottom: 1px solid var(--frost);
+    }
+    .spec-row:last-child { border-bottom: none; }
+
+    .spec-meta {
+      flex: 0 0 180px;
+      font-size: 0.6875rem;
+      color: var(--pewter);
+      font-family: var(--mono);
+      line-height: 1.6;
+    }
+    .spec-sample { flex: 1; }
+
+    .spec-display { font-family: var(--serif); font-size: 3.25rem; line-height: 1.15; color: var(--coal); }
+    .spec-display-it { font-family: var(--serif); font-style: italic; font-size: 3.25rem; line-height: 1.15; color: var(--coal); }
+    .spec-h2 { font-family: var(--serif); font-size: 1.75rem; color: var(--coal); line-height: 1.35; }
+    .spec-body { font-family: var(--sans); font-size: 1.0625rem; line-height: 1.7; color: var(--slate); max-width: 480px; }
+    .spec-label-text { font-family: var(--sans); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper); }
+    .spec-mono { font-family: var(--mono); font-size: 0.9375rem; color: var(--sea); background: var(--sea-soft); padding: 0.875rem 1.25rem; border-radius: 6px; display: inline-block; }
+
+    .type-scale {
+      margin-top: var(--sp-10);
+      padding: var(--sp-8);
+      background: var(--snow);
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-lg);
+    }
+
+    .type-scale h4 {
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: var(--sp-6);
+    }
+
+    .scale-row {
+      display: flex;
+      align-items: baseline;
+      padding: var(--sp-3) 0;
+      border-bottom: 1px solid var(--frost);
+    }
+    .scale-row:last-child { border-bottom: none; }
+
+    .scale-name { flex: 0 0 100px; font-size: 0.75rem; font-weight: 600; color: var(--coal); }
+    .scale-spec { flex: 0 0 180px; font-family: var(--mono); font-size: 0.6875rem; color: var(--pewter); }
+    .scale-preview { flex: 1; color: var(--coal); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+    /* ─── Logo ─── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-6);
+      margin: var(--sp-12) 0;
+    }
+
+    .logo-card {
+      padding: var(--sp-16) var(--sp-10);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 200px;
+      position: relative;
+    }
+
+    .logo-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.5625rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.4;
+    }
+
+    .logo-mark { font-family: var(--serif); font-size: 2.75rem; }
+    .logo-mark .ia { font-style: italic; }
+    .logo-sub { font-family: var(--sans); font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 400; margin-top: 0.625rem; opacity: 0.5; }
+
+    .bg-coal { background: var(--coal); color: var(--frost); }
+    .bg-paper { background: var(--paper); color: var(--coal); border: 1px solid var(--mist); }
+    .bg-copper { background: var(--copper); color: white; }
+    .bg-frost { background: var(--frost); color: var(--coal); }
+
+    .fav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--coal);
+      color: var(--frost);
+      font-family: var(--serif);
+      font-style: italic;
+      border-radius: 22%;
+    }
+
+    /* Logo rules */
+    .logo-rules {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-8);
+      margin-top: var(--sp-10);
+    }
+
+    .logo-rule-card {
+      padding: var(--sp-8);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--mist);
+      background: var(--snow);
+    }
+
+    .logo-rule-card h4 {
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-4);
+    }
+
+    .logo-rule-card.do h4 { color: var(--success); }
+    .logo-rule-card.dont h4 { color: var(--error); }
+
+    .logo-rule-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .logo-rule-card li {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      padding: var(--sp-2) 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .logo-rule-card.do li::before { content: ''; position: absolute; left: 0; top: 0.7rem; width: 6px; height: 6px; border-radius: 50%; background: var(--success); }
+    .logo-rule-card.dont li::before { content: ''; position: absolute; left: 0; top: 0.7rem; width: 6px; height: 6px; border-radius: 50%; background: var(--error); }
+
+    /* ─── Spacing ─── */
+    .spacing-vis {
+      display: flex;
+      gap: var(--sp-3);
+      align-items: flex-end;
+      margin: var(--sp-12) 0 var(--sp-6);
+      padding: var(--sp-8);
+      background: var(--snow);
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-lg);
+    }
+
+    .sp-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-2);
+    }
+
+    .sp-bar {
+      background: var(--copper-glow);
+      border: 1px solid var(--copper);
+      border-radius: 3px;
+      width: 40px;
+    }
+
+    .sp-label {
+      font-family: var(--mono);
+      font-size: 0.625rem;
+      color: var(--pewter);
+      text-align: center;
+    }
+
+    /* ─── Voice ─── */
+    .voice-cols {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-8);
+      margin: var(--sp-12) 0;
+    }
+
+    .voice-col {
+      padding: var(--sp-10);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--mist);
+      background: var(--snow);
+    }
+
+    .voice-col h4 {
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-6);
+    }
+
+    .voice-col.yes h4 { color: var(--copper); }
+    .voice-col.no h4 { color: var(--pewter); }
+
+    .voice-col blockquote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--slate);
+      padding-left: 1rem;
+      border-left: 2px solid var(--copper);
+      margin-bottom: 1.25rem;
+    }
+
+    .voice-col.no blockquote { border-left-color: var(--mist); color: var(--pewter); }
+    .voice-col blockquote:last-child { margin-bottom: 0; }
+
+    .attr-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-8);
+      margin-top: var(--sp-12);
+    }
+
+    .attr h5 { font-family: var(--serif); font-size: 1.125rem; font-weight: 400; color: var(--coal); margin-bottom: var(--sp-2); }
+    .attr p { font-size: 0.875rem; color: var(--pewter); max-width: none; }
+
+    /* Words */
+    .word-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-8);
+      margin-top: var(--sp-10);
+    }
+
+    .word-col h4 {
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-4);
+    }
+
+    .word-col.use h4 { color: var(--success); }
+    .word-col.avoid h4 { color: var(--error); }
+
+    .word-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+    }
+
+    .word-tag {
+      font-size: 0.8125rem;
+      padding: var(--sp-1) var(--sp-3);
+      border-radius: var(--radius-sm);
+      font-family: var(--mono);
+    }
+
+    .word-col.use .word-tag { background: var(--success-soft); color: var(--success); }
+    .word-col.avoid .word-tag { background: var(--error-soft); color: var(--error); }
+
+    /* ─── Components ─── */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-8);
+      margin: var(--sp-12) 0;
+    }
+
+    .comp-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--mist);
+      overflow: hidden;
+    }
+
+    .comp-preview { padding: var(--sp-10); display: flex; align-items: center; justify-content: center; background: var(--snow); }
+    .comp-meta { padding: var(--sp-4) var(--sp-6); border-top: 1px solid var(--frost); }
+    .comp-meta h5 { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; color: var(--coal); margin-bottom: var(--sp-1); }
+    .comp-meta p { font-size: 0.75rem; color: var(--pewter); max-width: none; }
+
+    /* Buttons */
+    .btn-primary {
+      padding: 0.875rem 2rem;
+      background: var(--copper);
+      color: white;
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+    }
+    .btn-primary:hover { background: var(--copper-deep); }
+
+    .btn-secondary {
+      padding: 0.875rem 2rem;
+      background: transparent;
+      color: var(--coal);
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--mist);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--copper); color: var(--copper); }
+
+    .btn-ghost {
+      padding: 0.875rem 2rem;
+      background: transparent;
+      color: var(--copper);
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-ghost:hover { color: var(--copper-deep); }
+
+    /* Input */
+    .input-demo {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-sm);
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      color: var(--coal);
+      background: white;
+      width: 100%;
+      max-width: 280px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .input-demo:focus { border-color: var(--copper); }
+    .input-demo::placeholder { color: var(--silver); }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .badge-copper { background: var(--copper-glow); color: var(--copper); }
+    .badge-success { background: var(--success-soft); color: var(--success); }
+    .badge-error { background: var(--error-soft); color: var(--error); }
+    .badge-sea { background: var(--sea-soft); color: var(--sea); }
+
+    /* ─── Mockups ─── */
+    .mock-hero {
+      background: var(--coal);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-20) var(--sp-16);
+      text-align: center;
+      color: var(--frost);
+      margin: var(--sp-12) 0 var(--sp-8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mock-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 70% 20%, rgba(181,112,77,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 80%, rgba(58,102,120,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .mock-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--sp-20);
+      position: relative;
+      z-index: 1;
+    }
+
+    .mock-nav-logo { font-family: var(--serif); font-size: 1.375rem; color: var(--frost); }
+    .mock-nav-links { display: flex; gap: 2rem; font-size: 0.875rem; color: var(--pewter); align-items: center; }
+    .mock-nav-links span:hover { color: var(--frost); cursor: pointer; }
+
+    .mock-nav-cta {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--copper);
+      color: var(--copper-light);
+      border-radius: var(--radius-sm);
+      font-size: 0.8125rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mock-nav-cta:hover { background: var(--copper); color: white; }
+
+    .mock-hero h2 {
+      font-family: var(--serif);
+      font-size: 3.25rem;
+      line-height: 1.15;
+      color: var(--frost);
+      margin-bottom: var(--sp-6);
+      position: relative;
+      z-index: 1;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .mock-hero h2 em { font-style: italic; color: var(--copper-light); }
+
+    .mock-hero > p {
+      font-size: 1rem;
+      color: var(--pewter);
+      max-width: 460px;
+      margin: 0 auto var(--sp-10);
+      position: relative;
+      z-index: 1;
+      line-height: 1.75;
+    }
+
+    .mock-cta-row {
+      display: flex;
+      gap: var(--sp-4);
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mock-cta-row .btn-secondary { color: var(--silver); border-color: var(--slate); }
+    .mock-cta-row .btn-secondary:hover { border-color: var(--silver); color: var(--frost); }
+
+    /* Cards */
+    .mock-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); margin: var(--sp-8) 0; }
+
+    .bcard {
+      aspect-ratio: 1.75;
+      border-radius: var(--radius-md);
+      padding: var(--sp-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+
+    .bcard-front { background: var(--coal); color: var(--frost); }
+    .bcard-back { background: var(--paper); color: var(--coal); border: 1px solid var(--mist); }
+    .bcard-logo { font-family: var(--serif); font-size: 1.625rem; }
+    .bcard-logo .ia { font-style: italic; }
+    .bcard-info { font-size: 0.8125rem; color: var(--pewter); line-height: 1.6; }
+    .bcard-rule { width: 24px; height: 1px; background: var(--copper); opacity: 0.5; }
+    .bcard-name { font-family: var(--serif); font-size: 1.0625rem; margin-bottom: 0.125rem; }
+    .bcard-role { font-size: 0.6875rem; color: var(--pewter); letter-spacing: 0.06em; text-transform: uppercase; }
+    .bcard-contact { font-size: 0.8125rem; color: var(--slate); line-height: 1.75; }
+
+    /* Email sig */
+    .email-sig {
+      background: white;
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-md);
+      padding: var(--sp-8);
+      max-width: 440px;
+      margin: var(--sp-8) 0;
+    }
+    .sig-name { font-family: var(--serif); font-size: 1.0625rem; }
+    .sig-title { font-size: 0.8125rem; color: var(--pewter); margin-top: 0.125rem; }
+    .sig-rule { width: 24px; height: 1px; background: var(--copper); margin: 0.875rem 0; opacity: 0.5; }
+    .sig-details { font-size: 0.75rem; color: var(--slate); line-height: 1.8; }
+    .sig-details a { color: var(--copper); text-decoration: none; }
+    .sig-details strong { font-family: var(--serif); font-weight: 400; }
+
+    /* One-pager */
+    .onepager {
+      background: var(--coal);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-12);
+      color: var(--frost);
+      max-width: 560px;
+      margin: var(--sp-8) 0;
+      position: relative;
+    }
+    .onepager::before { content: ''; position: absolute; top: 0; left: 3rem; right: 3rem; height: 2px; background: linear-gradient(90deg, var(--copper), transparent); opacity: 0.3; }
+    .onepager-logo { font-family: var(--serif); font-size: 1.75rem; margin-top: 0.5rem; }
+    .onepager-logo .ia { font-style: italic; }
+    .onepager-rule { width: 32px; height: 1px; background: var(--copper); margin: var(--sp-6) 0; opacity: 0.4; }
+    .onepager h3 { font-family: var(--serif); font-size: 1.375rem; line-height: 1.35; margin-bottom: var(--sp-4); color: var(--frost); }
+    .onepager p { font-size: 0.9375rem; color: var(--pewter); line-height: 1.75; margin-bottom: var(--sp-8); max-width: none; }
+    .onepager-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-6); padding-top: var(--sp-6); border-top: 1px solid rgba(255,255,255,0.08); }
+    .stat-num { font-family: var(--serif); font-size: 2rem; color: var(--copper-light); }
+    .stat-label { font-size: 0.6875rem; color: var(--pewter); margin-top: var(--sp-1); line-height: 1.4; }
+
+    /* ─── Photography ─── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-6);
+      margin: var(--sp-12) 0;
+    }
+
+    .photo-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--mist);
+    }
+
+    .photo-placeholder {
+      aspect-ratio: 1.3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.9375rem;
+    }
+
+    .photo-meta {
+      padding: var(--sp-4) var(--sp-4);
+      background: var(--snow);
+    }
+
+    .photo-meta h5 {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--coal);
+      margin-bottom: var(--sp-1);
+    }
+
+    .photo-meta p { font-size: 0.75rem; color: var(--pewter); max-width: none; }
+
+    /* ─── Footer ─── */
+    .foot {
+      padding: var(--sp-16) 0 var(--sp-12);
+      text-align: center;
+      border-top: 1px solid var(--frost);
+    }
+
+    .foot-logo { font-family: var(--serif); font-size: 1.375rem; color: var(--coal); }
+    .foot-logo .ia { font-style: italic; }
+    .foot-sub { font-size: 0.75rem; color: var(--pewter); margin-top: var(--sp-2); }
+    .foot-note { font-size: 0.6875rem; color: var(--silver); margin-top: var(--sp-1); }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .cover h1 { font-size: 3rem; }
+      h2 { font-size: 1.75rem; }
+      .container, .wide { padding: 0 1.5rem; }
+      section { padding: var(--sp-16) 0; }
+      .dna-grid, .logo-grid, .voice-cols, .mock-cards, .logo-rules, .comp-grid, .usage-grid, .word-grid { grid-template-columns: 1fr; }
+      .attr-grid { grid-template-columns: repeat(2, 1fr); }
+      .toc-grid { grid-template-columns: 1fr; }
+      .mock-hero { padding: var(--sp-12) var(--sp-6); }
+      .mock-hero h2 { font-size: 2rem; }
+      .spec-row { flex-direction: column; gap: var(--sp-2); }
+      .spec-meta { flex: none; }
+      .palette-strip { flex-wrap: wrap; }
+      .strip-sw { min-width: 25%; }
+      .bible-nav-links { display: none; }
+      .contrast-grid { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr; }
+      .spacing-vis { flex-wrap: wrap; }
+    }
+
+    @media print {
+      .bible-nav { display: none; }
+      section { padding: 2rem 0; break-inside: avoid; }
+      .cover { min-height: auto; padding: 4rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Fixed Nav ─── -->
+  <nav class="bible-nav">
+    <div class="bible-nav-inner">
+      <div style="display: flex; align-items: center; gap: var(--sp-4);">
+        <span class="bible-nav-logo">Vitor<em>ia</em></span>
+        <span class="bible-nav-tag">Brand Bible</span>
+      </div>
+      <div class="bible-nav-links">
+        <a href="#adn">ADN</a>
+        <a href="#color">Color</a>
+        <a href="#tipografia">Tipografía</a>
+        <a href="#logo">Logo</a>
+        <a href="#voz">Voz</a>
+        <a href="#componentes">Componentes</a>
+        <a href="#aplicacion">Aplicación</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- COVER                                       -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="cover" id="cover">
+    <span class="label fade d1">Brand Bible</span>
+    <h1 class="fade d2">Vitor<span class="wm">ia</span></h1>
+    <p class="tagline fade d3">Infraestructura inteligente de cobranza judicial</p>
+    <div class="cover-rule fade d3"></div>
+    <p class="fade d4">Este documento es la fuente única de verdad<br>para toda comunicación visual y verbal de Vitoria.</p>
+    <div class="cover-footer">Versión 1.0 &middot; Marzo 2026 &middot; Confidencial</div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- TABLE OF CONTENTS                           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="toc">
+    <div class="container">
+      <span class="label">Contenido</span>
+      <h2>Índice</h2>
+      <div class="toc-grid">
+        <a href="#adn" class="toc-item"><span class="toc-num">01</span><span class="toc-label">ADN de marca</span></a>
+        <a href="#color" class="toc-item"><span class="toc-num">02</span><span class="toc-label">Color</span></a>
+        <a href="#tipografia" class="toc-item"><span class="toc-num">03</span><span class="toc-label">Tipografía</span></a>
+        <a href="#logo" class="toc-item"><span class="toc-num">04</span><span class="toc-label">Logotipo</span></a>
+        <a href="#espaciado" class="toc-item"><span class="toc-num">05</span><span class="toc-label">Espaciado & Grid</span></a>
+        <a href="#voz" class="toc-item"><span class="toc-num">06</span><span class="toc-label">Tono de voz</span></a>
+        <a href="#componentes" class="toc-item"><span class="toc-num">07</span><span class="toc-label">Componentes</span></a>
+        <a href="#fotografia" class="toc-item"><span class="toc-num">08</span><span class="toc-label">Fotografía & Imagen</span></a>
+        <a href="#aplicacion" class="toc-item"><span class="toc-num">09</span><span class="toc-label">Aplicación</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 01 — ADN DE MARCA                          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="adn">
+    <div class="container">
+      <span class="label">01 &mdash; ADN de marca</span>
+      <h2>Lo que nos define</h2>
+      <p>Vitoria automatiza la cobranza judicial en Chile. Nuestra marca debe comunicar exactamente eso: precisión legal, potencia tecnológica, y la confianza de quien sabe que va a ganar.</p>
+
+      <div style="margin: var(--sp-12) 0; padding: var(--sp-10); background: var(--coal); border-radius: var(--radius-lg); color: var(--frost);">
+        <div style="font-family: var(--serif); font-style: italic; font-size: 1.5rem; line-height: 1.5; max-width: 560px; color: var(--silver);">
+          "Convertimos complejidad legal en claridad operativa. No vendemos software — entregamos victorias."
+        </div>
+        <div style="margin-top: var(--sp-6); font-size: 0.75rem; color: var(--pewter); letter-spacing: 0.1em; text-transform: uppercase;">Manifiesto de marca</div>
+      </div>
+
+      <div class="dna-grid">
+        <div class="dna-card">
+          <div class="dna-num">01</div>
+          <h4>Victoria silenciosa</h4>
+          <p>Nuestro nombre ya dice lo que hacemos: ganar. No necesitamos decirlo en el copy. La marca transmite efectividad, no promesas.</p>
+        </div>
+        <div class="dna-card">
+          <div class="dna-num">02</div>
+          <h4>Cobre como firma</h4>
+          <p>Un acento único en el espacio legal tech. El cobre evoca tradición (sellos, placas legales) y modernidad (circuitos, conductividad). Es cálido sin ser informal.</p>
+        </div>
+        <div class="dna-card">
+          <div class="dna-num">03</div>
+          <h4>Rigor editorial</h4>
+          <p>Cada elemento tiene una razón. La línea de cobre a la izquierda, la itálica en "ia", el espacio entre secciones. Diseñamos como un tribunal redacta: nada sobra.</p>
+        </div>
+        <div class="dna-card">
+          <div class="dna-num">04</div>
+          <h4>Contraste con propósito</h4>
+          <p>La base fría (charcoal, slate) con el acento cálido (copper) crea tensión visual. Eso es Vitoria: tecnología fría al servicio de resultados que importan.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--sp-8);">
+        <h3>Posicionamiento</h3>
+        <p style="margin-top: var(--sp-4);">Vitoria no es un software de gestión. Es la <strong>infraestructura inteligente</strong> que permite a estudios de abogados operar cobranza judicial a escala, con precisión documental y sin fricción operativa.</p>
+        <div style="margin-top: var(--sp-8); display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-8);">
+          <div>
+            <h4 style="font-family: var(--sans); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper); margin-bottom: var(--sp-3);">Para quién</h4>
+            <p style="font-size: 0.9375rem;">Estudios de abogados especializados en cobranza judicial. Firmas legales que gestionan carteras de instrumentos de cobro a escala.</p>
+          </div>
+          <div>
+            <h4 style="font-family: var(--sans); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper); margin-bottom: var(--sp-3);">Qué hacemos</h4>
+            <p style="font-size: 0.9375rem;">Automatizamos el ciclo completo de cobranza judicial: lectura de documentos, generación de demandas, seguimiento procesal, notificaciones.</p>
+          </div>
+          <div>
+            <h4 style="font-family: var(--sans); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper); margin-bottom: var(--sp-3);">Cómo se siente</h4>
+            <p style="font-size: 0.9375rem;">Como tener un equipo legal senior que nunca duerme, nunca comete errores de formato, y entrega en horas lo que antes tomaba semanas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 960px;"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 02 — COLOR                                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="color">
+    <div class="container">
+      <span class="label">02 &mdash; Color</span>
+      <h2>Charcoal & Copper</h2>
+      <p>Una base neutral fría con un único acento cálido. La tensión entre los dos comunica exactamente lo que somos: tecnología rigurosa con resultados que se sienten.</p>
+
+      <h3 style="margin-top: var(--sp-12);">Escala de neutrales</h3>
+      <div class="palette-strip">
+        <div class="strip-sw" style="background:#1c2127;color:#b0b5be;"><span class="strip-name">Coal</span><span class="strip-hex">#1c2127</span></div>
+        <div class="strip-sw" style="background:#2e333a;color:#b0b5be;"><span class="strip-name">Coal Soft</span><span class="strip-hex">#2e333a</span></div>
+        <div class="strip-sw" style="background:#4a5260;color:#d9dce1;"><span class="strip-name">Slate</span><span class="strip-hex">#4a5260</span></div>
+        <div class="strip-sw" style="background:#7a8291;color:#eef0f2;"><span class="strip-name">Pewter</span><span class="strip-hex">#7a8291</span></div>
+        <div class="strip-sw" style="background:#b0b5be;color:#1c2127;"><span class="strip-name">Silver</span><span class="strip-hex">#b0b5be</span></div>
+        <div class="strip-sw" style="background:#d9dce1;color:#1c2127;"><span class="strip-name">Mist</span><span class="strip-hex">#d9dce1</span></div>
+        <div class="strip-sw" style="background:#eef0f2;color:#1c2127;"><span class="strip-name">Frost</span><span class="strip-hex">#eef0f2</span></div>
+        <div class="strip-sw" style="background:#f8f9fa;color:#4a5260;"><span class="strip-name">Snow</span><span class="strip-hex">#f8f9fa</span></div>
+        <div class="strip-sw" style="background:#fdfdfb;color:#4a5260;border-right:1px solid #eef0f2;"><span class="strip-name">Paper</span><span class="strip-hex">#fdfdfb</span></div>
+      </div>
+      <p class="text-small" style="font-size: 0.8125rem; color: var(--pewter); margin-top: var(--sp-3);">Los neutrales tienen un sutil undertone azul-frío. Esto crea un lienzo limpio para que el cobre destaque como acento cálido.</p>
+
+      <h3 style="margin-top: var(--sp-12);">Acentos</h3>
+      <div class="accent-row">
+        <div class="accent-chip"><div class="accent-dot" style="background:#b5704d;"></div><div class="accent-label">Copper</div><div class="accent-hex">#b5704d</div></div>
+        <div class="accent-chip"><div class="accent-dot" style="background:#8f5636;"></div><div class="accent-label">Copper Deep</div><div class="accent-hex">#8f5636</div></div>
+        <div class="accent-chip"><div class="accent-dot" style="background:#d4956e;"></div><div class="accent-label">Copper Light</div><div class="accent-hex">#d4956e</div></div>
+        <div class="accent-chip"><div class="accent-dot" style="background:rgba(181,112,77,0.1);border:1px solid #d9dce1;"></div><div class="accent-label">Copper Glow</div><div class="accent-hex">10% opacity</div></div>
+        <div class="accent-chip"><div class="accent-dot" style="background:#3a6678;"></div><div class="accent-label">Sea</div><div class="accent-hex">#3a6678</div></div>
+        <div class="accent-chip"><div class="accent-dot" style="background:#3d7a5a;"></div><div class="accent-label">Success</div><div class="accent-hex">#3d7a5a</div></div>
+        <div class="accent-chip"><div class="accent-dot" style="background:#944040;"></div><div class="accent-label">Error</div><div class="accent-hex">#944040</div></div>
+        <div class="accent-chip"><div class="accent-dot" style="background:#8a7030;"></div><div class="accent-label">Warning</div><div class="accent-hex">#8a7030</div></div>
+      </div>
+
+      <div class="color-usage">
+        <h4>Reglas de uso</h4>
+        <div class="usage-grid">
+          <div class="usage-item">
+            <h5>Copper es funcional, no decorativo</h5>
+            <p>Se usa en: labels de sección, CTAs primarios, líneas de acento, links activos, hover states. Máximo 2-3 instancias por pantalla.</p>
+          </div>
+          <div class="usage-item">
+            <h5>Paper como fondo por defecto</h5>
+            <p>El fondo base es Paper (#fdfdfb). Nunca blanco puro (#fff). Las superficies elevadas usan Snow o White con borde Mist.</p>
+          </div>
+          <div class="usage-item">
+            <h5>Sea para datos y código</h5>
+            <p>Sea (#3a6678) es exclusivo para código, datos técnicos (ROL, causa), y monospace. Nunca como acento decorativo.</p>
+          </div>
+          <div class="usage-item">
+            <h5>Colores funcionales con soft variants</h5>
+            <p>Success, Error, Warning siempre con su variante soft como fondo. Nunca como color de texto sobre fondo Paper.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: var(--sp-12);">Contraste & Accesibilidad</h3>
+      <p>Todas las combinaciones de texto cumplen WCAG AA (mínimo 4.5:1 para texto normal).</p>
+      <div class="contrast-grid">
+        <div class="contrast-card" style="background: var(--coal); color: var(--frost);">
+          <div class="contrast-label">Coal sobre Paper</div>
+          <div class="contrast-ratio">13.8:1</div>
+          <div class="contrast-pass" style="color: var(--success);">AAA</div>
+        </div>
+        <div class="contrast-card" style="background: var(--paper); color: var(--copper); border: 1px solid var(--mist);">
+          <div class="contrast-label">Copper sobre Paper</div>
+          <div class="contrast-ratio">4.6:1</div>
+          <div class="contrast-pass" style="color: var(--success);">AA</div>
+        </div>
+        <div class="contrast-card" style="background: var(--coal); color: var(--copper-light);">
+          <div class="contrast-label">Copper Light sobre Coal</div>
+          <div class="contrast-ratio">6.2:1</div>
+          <div class="contrast-pass" style="color: var(--success);">AA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 960px;"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 03 — TIPOGRAFÍA                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="tipografia">
+    <div class="container">
+      <span class="label">03 &mdash; Tipografía</span>
+      <h2>Baskerville para carácter,<br>Inter para trabajo</h2>
+      <p>Libre Baskerville es una transicional con remates marcados y una itálica expresiva — le da personalidad y autoridad a la marca. Inter es el caballo de batalla para cuerpo y UI: legible, neutro, optimizado para pantallas.</p>
+
+      <div class="specimen">
+        <div class="spec-row">
+          <div class="spec-meta">Libre Baskerville<br>Regular / 52px</div>
+          <div class="spec-sample"><div class="spec-display">Cobranza judicial,<br>redefinida.</div></div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-meta">Libre Baskerville<br>Italic / 52px</div>
+          <div class="spec-sample"><div class="spec-display-it">Cada causa, cada plazo,<br>cada detalle.</div></div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-meta">Libre Baskerville<br>Regular / 28px</div>
+          <div class="spec-sample"><div class="spec-h2">Automatización inteligente para la gestión de pagarés, mutuos e instrumentos de cobranza</div></div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-meta">Inter<br>Regular / 17px</div>
+          <div class="spec-sample"><div class="spec-body">Vitoria reduce los tiempos de gestión judicial de semanas a horas. Desde la presentación de la demanda hasta la notificación, cada paso se ejecuta con precisión documental y trazabilidad completa.</div></div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-meta">Inter<br>SemiBold / 11px</div>
+          <div class="spec-sample"><div class="spec-label-text">Estado del proceso &middot; Documentos asociados &middot; Historial de gestiones</div></div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-meta">JetBrains Mono<br>Regular / 15px</div>
+          <div class="spec-sample"><div class="spec-mono">ROL C-12847-2026 &nbsp;&middot;&nbsp; 2° Juzgado Civil de Santiago</div></div>
+        </div>
+      </div>
+
+      <div class="type-scale">
+        <h4>Escala tipográfica</h4>
+        <div class="scale-row">
+          <div class="scale-name">Display</div>
+          <div class="scale-spec">Baskerville 56px/1.1</div>
+          <div class="scale-preview" style="font-family: var(--serif); font-size: 2rem;">Cobranza judicial</div>
+        </div>
+        <div class="scale-row">
+          <div class="scale-name">H1</div>
+          <div class="scale-spec">Baskerville 40px/1.12</div>
+          <div class="scale-preview" style="font-family: var(--serif); font-size: 1.5rem;">Precisión digital</div>
+        </div>
+        <div class="scale-row">
+          <div class="scale-name">H2</div>
+          <div class="scale-spec">Baskerville 32px/1.2</div>
+          <div class="scale-preview" style="font-family: var(--serif); font-size: 1.25rem;">Infraestructura inteligente</div>
+        </div>
+        <div class="scale-row">
+          <div class="scale-name">H3</div>
+          <div class="scale-spec">Baskerville 24px/1.35</div>
+          <div class="scale-preview" style="font-family: var(--serif); font-size: 1.125rem;">Gestión automatizada</div>
+        </div>
+        <div class="scale-row">
+          <div class="scale-name">Body</div>
+          <div class="scale-spec">Inter 17px/1.7</div>
+          <div class="scale-preview" style="font-family: var(--sans); font-size: 0.9375rem;">Vitoria reduce los tiempos de gestión...</div>
+        </div>
+        <div class="scale-row">
+          <div class="scale-name">Small</div>
+          <div class="scale-spec">Inter 14px/1.6</div>
+          <div class="scale-preview" style="font-family: var(--sans); font-size: 0.8125rem;">Información complementaria y metadata</div>
+        </div>
+        <div class="scale-row">
+          <div class="scale-name">Caption</div>
+          <div class="scale-spec">Inter 600 11px/1.5</div>
+          <div class="scale-preview" style="font-family: var(--sans); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper);">Labels y secciones</div>
+        </div>
+        <div class="scale-row">
+          <div class="scale-name">Mono</div>
+          <div class="scale-spec">JetBrains 15px/1.5</div>
+          <div class="scale-preview" style="font-family: var(--mono); font-size: 0.8125rem; color: var(--sea);">ROL C-12847-2026</div>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--sp-10);">
+        <h3>Reglas tipográficas</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-8); margin-top: var(--sp-6);">
+          <div>
+            <p style="font-size: 0.9375rem;"><strong>Baskerville es para títulos y citas.</strong> Nunca para body copy, botones, labels, o UI. Su peso visual la hace ineficiente en bloques de texto.</p>
+          </div>
+          <div>
+            <p style="font-size: 0.9375rem;"><strong>Inter es para todo lo demás.</strong> Body, UI, formularios, tablas, metadata. Pesos permitidos: 300, 400, 500, 600. Nunca 700+ (se ve pesado).</p>
+          </div>
+          <div>
+            <p style="font-size: 0.9375rem;"><strong>JetBrains Mono es para datos legales.</strong> Roles de causa, identificadores, códigos, montos. Fondo Sea Soft cuando inline.</p>
+          </div>
+          <div>
+            <p style="font-size: 0.9375rem;"><strong>Labels siempre en uppercase.</strong> Inter SemiBold, 11px, letter-spacing 0.14em, color Copper. Es la firma tipográfica de Vitoria.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 960px;"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 04 — LOGOTIPO                               -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="logo">
+    <div class="container">
+      <span class="label">04 &mdash; Logotipo</span>
+      <h2>El nombre es la marca</h2>
+      <p>Sin símbolo. Sin icono. La Baskerville itálica en "ia" es un gesto que dice "inteligencia" sin deletrearlo. El logotipo vive y muere por su tipografía.</p>
+
+      <div class="logo-grid">
+        <div class="logo-card bg-coal"><div class="logo-tag">Fondo oscuro</div><div class="logo-mark" style="color:var(--frost);">Vitor<span class="ia">ia</span></div></div>
+        <div class="logo-card bg-paper"><div class="logo-tag">Fondo claro</div><div class="logo-mark" style="color:var(--coal);">Vitor<span class="ia">ia</span></div></div>
+        <div class="logo-card bg-copper"><div class="logo-tag">Acento</div><div class="logo-mark" style="color:white;">Vitor<span class="ia">ia</span></div><div class="logo-sub" style="color:rgba(255,255,255,0.6);">Cobranza judicial inteligente</div></div>
+        <div class="logo-card bg-frost">
+          <div class="logo-tag">Favicon / App</div>
+          <div style="display:flex;gap:var(--sp-4);align-items:center;justify-content:center;">
+            <div class="fav" style="width:64px;height:64px;border-radius:14px;font-size:2rem;">V</div>
+            <div class="fav" style="width:44px;height:44px;border-radius:10px;font-size:1.375rem;">V</div>
+            <div class="fav" style="width:28px;height:28px;border-radius:7px;font-size:0.875rem;">V</div>
+          </div>
+          <div style="margin-top:var(--sp-6);display:flex;gap:var(--sp-3);justify-content:center;">
+            <div class="fav" style="width:44px;height:44px;border-radius:10px;font-size:1.375rem;background:var(--copper);color:white;">V</div>
+            <div class="fav" style="width:44px;height:44px;border-radius:10px;font-size:1.375rem;background:var(--coal);color:var(--copper-light);">V</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-rules">
+        <div class="logo-rule-card do">
+          <h4>Sí</h4>
+          <ul>
+            <li>Usar siempre Libre Baskerville para el logotipo</li>
+            <li>Mantener la itálica solo en "ia"</li>
+            <li>Respetar el área de respeto: 1x la altura de la "V" en cada lado</li>
+            <li>Usar sobre fondos del sistema: Coal, Paper, Copper, Frost</li>
+            <li>Tamaño mínimo digital: 80px de ancho</li>
+            <li>Tamaño mínimo impreso: 20mm de ancho</li>
+          </ul>
+        </div>
+        <div class="logo-rule-card dont">
+          <h4>No</h4>
+          <ul>
+            <li>No usar "VITORIA" en mayúsculas — no es un acrónimo</li>
+            <li>No cambiar la tipografía del logotipo</li>
+            <li>No usar colores que no sean del sistema</li>
+            <li>No agregar sombras, gradientes, bordes o efectos</li>
+            <li>No usar sobre fotografías sin overlay oscuro (min 70% opacity)</li>
+            <li>No deformar, estirar o rotar el logotipo</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--sp-10);">
+        <h3>Nomenclatura</h3>
+        <p style="margin-top: var(--sp-4);"><strong>"Vitoria"</strong> es la marca formal y el logotipo. <strong>"VitorIA"</strong> con mayúsculas es un recurso comunicacional válido en copy y presentaciones, pero <em>nunca es el logotipo</em>. En contexto técnico o interno: "Vitoria" siempre.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 960px;"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 05 — ESPACIADO & GRID                       -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="espaciado">
+    <div class="container">
+      <span class="label">05 &mdash; Espaciado & Grid</span>
+      <h2>Consistencia espacial</h2>
+      <p>Todo el spacing se basa en una grilla de 4px. Usamos una escala limitada para garantizar ritmo vertical y armonía visual en todas las superficies.</p>
+
+      <div class="spacing-vis">
+        <div class="sp-block"><div class="sp-bar" style="height:4px;"></div><div class="sp-label">4<br>sp-1</div></div>
+        <div class="sp-block"><div class="sp-bar" style="height:8px;"></div><div class="sp-label">8<br>sp-2</div></div>
+        <div class="sp-block"><div class="sp-bar" style="height:12px;"></div><div class="sp-label">12<br>sp-3</div></div>
+        <div class="sp-block"><div class="sp-bar" style="height:16px;"></div><div class="sp-label">16<br>sp-4</div></div>
+        <div class="sp-block"><div class="sp-bar" style="height:24px;"></div><div class="sp-label">24<br>sp-6</div></div>
+        <div class="sp-block"><div class="sp-bar" style="height:32px;"></div><div class="sp-label">32<br>sp-8</div></div>
+        <div class="sp-block"><div class="sp-bar" style="height:40px;"></div><div class="sp-label">40<br>sp-10</div></div>
+        <div class="sp-block"><div class="sp-bar" style="height:48px;"></div><div class="sp-label">48<br>sp-12</div></div>
+        <div class="sp-block"><div class="sp-bar" style="height:64px;"></div><div class="sp-label">64<br>sp-16</div></div>
+        <div class="sp-block"><div class="sp-bar" style="height:80px;"></div><div class="sp-label">80<br>sp-20</div></div>
+        <div class="sp-block"><div class="sp-bar" style="height:96px;"></div><div class="sp-label">96<br>sp-24</div></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-8); margin-top: var(--sp-10);">
+        <div>
+          <h3>Grid</h3>
+          <p style="font-size: 0.9375rem; margin-top: var(--sp-4);">Contenido: <strong>960px</strong> máximo (container). Extendido: <strong>1120px</strong> (wide). Padding lateral: <strong>48px</strong> desktop, <strong>24px</strong> mobile. Columnas: 12 desktop, 4 mobile.</p>
+        </div>
+        <div>
+          <h3>Border Radius</h3>
+          <p style="font-size: 0.9375rem; margin-top: var(--sp-4);"><strong>4px</strong> — botones, inputs, badges. <strong>8px</strong> — tarjetas, tooltips. <strong>10px</strong> — secciones, cards grandes. <strong>14px</strong> — favicons, app icons. Nunca full-round en elementos rectangulares.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--sp-10);">
+        <h3>La línea de cobre</h3>
+        <p style="margin-top: var(--sp-4);">El elemento firma de Vitoria es una línea fina de cobre que aparece como acento en dividers, bordes izquierdos de tarjetas, y separadores de sección. Siempre <strong>1px de alto</strong> (horizontal) o <strong>3px de ancho</strong> (vertical). El tramo de cobre en dividers horizontales es de <strong>48px</strong>. Opacity: 40-60% en contextos sutiles, 100% en CTAs.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 960px;"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 06 — TONO DE VOZ                            -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="voz">
+    <div class="container">
+      <span class="label">06 &mdash; Tono de voz</span>
+      <h2>Cómo habla Vitoria</h2>
+      <p>Como un socio senior que sabe que no necesita levantar la voz. Directo, técnico, con datos. Nunca hiperbólico, nunca vendedor.</p>
+
+      <div class="voice-cols">
+        <div class="voice-col yes">
+          <h4>Así hablamos</h4>
+          <blockquote>"Vitoria reduce los tiempos de gestión de cobranza judicial de semanas a horas."</blockquote>
+          <blockquote>"Tres estudios de abogados operan con Vitoria hoy."</blockquote>
+          <blockquote>"Cada escrito se genera con la estructura procesal que el tribunal requiere."</blockquote>
+        </div>
+        <div class="voice-col no">
+          <h4>Así no</h4>
+          <blockquote>"¡La IA más potente del mundo legal!"</blockquote>
+          <blockquote>"Revolucionamos la industria con nuestra plataforma disruptiva."</blockquote>
+          <blockquote>"Todo automatizado, de principio a fin, sin complicaciones."</blockquote>
+        </div>
+      </div>
+
+      <div class="attr-grid">
+        <div class="attr"><h5>Preciso</h5><p>Números, no adjetivos. "85% menos tiempo", no "mucho más rápido".</p></div>
+        <div class="attr"><h5>Contenido</h5><p>Confianza tranquila. Los resultados hablan por nosotros.</p></div>
+        <div class="attr"><h5>Técnico</h5><p>Hablamos de roles, causas, escritos. El idioma de nuestros clientes.</p></div>
+        <div class="attr"><h5>Cálido</h5><p>Rigurosos pero no fríos. Detrás de cada proceso hay personas.</p></div>
+      </div>
+
+      <div class="word-grid">
+        <div class="word-col use">
+          <h4>Usamos</h4>
+          <div class="word-list">
+            <span class="word-tag">infraestructura</span>
+            <span class="word-tag">precisión</span>
+            <span class="word-tag">trazabilidad</span>
+            <span class="word-tag">gestión judicial</span>
+            <span class="word-tag">automatización</span>
+            <span class="word-tag">escala</span>
+            <span class="word-tag">inteligente</span>
+            <span class="word-tag">documental</span>
+            <span class="word-tag">operación</span>
+            <span class="word-tag">resultado</span>
+          </div>
+        </div>
+        <div class="word-col avoid">
+          <h4>Evitamos</h4>
+          <div class="word-list">
+            <span class="word-tag">revolución</span>
+            <span class="word-tag">disrupción</span>
+            <span class="word-tag">poderoso</span>
+            <span class="word-tag">líder del mercado</span>
+            <span class="word-tag">game-changer</span>
+            <span class="word-tag">solución integral</span>
+            <span class="word-tag">de última generación</span>
+            <span class="word-tag">innovador</span>
+            <span class="word-tag">de clase mundial</span>
+            <span class="word-tag">sin precedentes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 960px;"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 07 — COMPONENTES                            -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="componentes">
+    <div class="container">
+      <span class="label">07 &mdash; Componentes</span>
+      <h2>Kit de UI</h2>
+      <p>Estos son los bloques fundamentales que se usan en todas las superficies de Vitoria: landing, presentaciones, documentos, producto.</p>
+
+      <div class="comp-grid">
+        <div class="comp-card">
+          <div class="comp-preview">
+            <div style="display: flex; gap: var(--sp-4); flex-wrap: wrap;">
+              <button class="btn-primary">Primario &rarr;</button>
+              <button class="btn-secondary">Secundario</button>
+              <button class="btn-ghost">Ghost</button>
+            </div>
+          </div>
+          <div class="comp-meta"><h5>Botones</h5><p>3 variantes. Primary siempre en Copper. Max 1 primary por sección.</p></div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-preview">
+            <div style="display: flex; flex-direction: column; gap: var(--sp-4); width: 100%; max-width: 280px;">
+              <div>
+                <div style="font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper); margin-bottom: var(--sp-2);">Label</div>
+                <input class="input-demo" type="text" placeholder="Placeholder text">
+              </div>
+            </div>
+          </div>
+          <div class="comp-meta"><h5>Input</h5><p>Borde Mist, focus en Copper. Label siempre presente, nunca floating.</p></div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-preview">
+            <div style="display: flex; gap: var(--sp-3); flex-wrap: wrap;">
+              <span class="badge badge-copper">En progreso</span>
+              <span class="badge badge-success">Completado</span>
+              <span class="badge badge-error">Rechazado</span>
+              <span class="badge badge-sea">ROL C-12847</span>
+            </div>
+          </div>
+          <div class="comp-meta"><h5>Badges</h5><p>4 variantes funcionales. Siempre con fondo soft + texto color fuerte.</p></div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-preview">
+            <div style="width: 100%; max-width: 320px; padding: var(--sp-6); background: var(--snow); border: 1px solid var(--mist); border-radius: var(--radius-md); position: relative; overflow: hidden;">
+              <div style="position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--copper); opacity: 0.4;"></div>
+              <div style="font-family: var(--serif); font-size: 1rem; color: var(--coal); margin-bottom: var(--sp-2);">Título de tarjeta</div>
+              <div style="font-size: 0.875rem; color: var(--pewter);">Contenido descriptivo con información relevante para el contexto.</div>
+            </div>
+          </div>
+          <div class="comp-meta"><h5>Tarjetas</h5><p>Borde Mist, fondo Snow, línea de cobre izquierda. El patrón firma de Vitoria.</p></div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-preview">
+            <div style="width: 100%;">
+              <div style="width: 100%; height: 1px; background: var(--mist); position: relative;">
+                <div style="position: absolute; left: 0; top: 0; width: 48px; height: 1px; background: var(--copper);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-meta"><h5>Divider (Rule)</h5><p>1px Mist con 48px de cobre en el inicio. Elemento firma entre secciones.</p></div>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-preview">
+            <div style="text-align: center;">
+              <div style="font-family: var(--sans); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper); margin-bottom: var(--sp-4);">Section Label</div>
+              <div style="font-family: var(--serif); font-size: 1.375rem; color: var(--coal);">Título de sección</div>
+            </div>
+          </div>
+          <div class="comp-meta"><h5>Section Header</h5><p>Label Copper + H2/H3 Baskerville. Patrón para abrir toda sección nueva.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 960px;"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 08 — FOTOGRAFÍA & IMAGEN                    -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="fotografia">
+    <div class="container">
+      <span class="label">08 &mdash; Fotografía & Imagen</span>
+      <h2>Dirección visual</h2>
+      <p>Las imágenes de Vitoria no son decorativas. Cada foto o ilustración debe comunicar precisión, profesionalismo y escala tecnológica.</p>
+
+      <div class="photo-grid">
+        <div class="photo-card">
+          <div class="photo-placeholder" style="background: var(--coal); color: var(--pewter);">Espacios de trabajo legal</div>
+          <div class="photo-meta">
+            <h5>Contexto profesional</h5>
+            <p>Oficinas, escritorios, documentos legales. Iluminación natural, tonos fríos. Sin personas posando.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-placeholder" style="background: var(--coal-soft); color: var(--pewter);">Interfaces y pantallas</div>
+          <div class="photo-meta">
+            <h5>Producto en acción</h5>
+            <p>Screenshots del producto, dashboards, flujos. Siempre con contexto: la pantalla dentro del workspace.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-placeholder" style="background: var(--slate); color: var(--mist);">Arquitectura & Datos</div>
+          <div class="photo-meta">
+            <h5>Abstracción técnica</h5>
+            <p>Patrones geométricos sutiles, diagramas simplificados. Nunca ilustraciones cartoon o stock art genérico.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--sp-10); display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-8);">
+        <div>
+          <h3>Tratamiento de imágenes</h3>
+          <p style="font-size: 0.9375rem; margin-top: var(--sp-4);">Las fotos se tratan con un overlay sutil del color Coal al 5-15% para unificar el tono. Saturación reducida (~85%). Nunca usar filtros warm/sepia. Cuando el logo va sobre imagen: overlay Coal al 70% mínimo.</p>
+        </div>
+        <div>
+          <h3>Iconografía</h3>
+          <p style="font-size: 0.9375rem; margin-top: var(--sp-4);">Iconos de línea, peso 1.5px, estilo outlined. Color: Slate en estados normales, Copper en estados activos. Sin relleno, sin decoraciones. Fuente recomendada: Lucide Icons o Phosphor Icons (light weight).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 960px;"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 09 — APLICACIÓN                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="aplicacion">
+    <div class="wide">
+      <span class="label">09 &mdash; Aplicación</span>
+      <h2>La marca en contexto</h2>
+      <p>Así se ve Vitoria cuando la marca y el producto hablan el mismo idioma.</p>
+
+      <!-- Hero mockup -->
+      <div class="mock-hero">
+        <div class="mock-nav">
+          <div class="mock-nav-logo">Vitor<em style="font-style:italic;">ia</em></div>
+          <div class="mock-nav-links">
+            <span>Producto</span>
+            <span>Clientes</span>
+            <span>Equipo</span>
+            <span class="mock-nav-cta">Agendar demo</span>
+          </div>
+        </div>
+        <h2>Cobranza judicial<br>con <em>precisión digital</em></h2>
+        <p>Automatizamos la gestión de pagarés, mutuos e instrumentos de cobranza — desde la demanda hasta la notificación — con trazabilidad completa.</p>
+        <div class="mock-cta-row">
+          <button class="btn-primary">Conocer Vitoria &rarr;</button>
+          <button class="btn-secondary">Ver casos de uso</button>
+        </div>
+      </div>
+
+      <!-- Business Cards -->
+      <h3 style="margin: var(--sp-12) 0 var(--sp-4);">Tarjeta de presentación</h3>
+      <div class="mock-cards">
+        <div class="bcard bcard-front">
+          <div><div class="bcard-logo">Vitor<span class="ia">ia</span></div><div class="bcard-rule" style="margin-top:0.75rem;"></div></div>
+          <div class="bcard-info">Cobranza judicial inteligente<br>usevitoria.com</div>
+        </div>
+        <div class="bcard bcard-back">
+          <div><div class="bcard-name">Fernando Salinas</div><div class="bcard-role">Fundador & CEO</div></div>
+          <div class="bcard-contact">fernando@usevitoria.com<br>+56 9 XXXX XXXX<br>usevitoria.com</div>
+        </div>
+      </div>
+
+      <!-- Email Signature -->
+      <h3 style="margin: var(--sp-12) 0 var(--sp-4);">Firma de correo</h3>
+      <div class="email-sig">
+        <div class="sig-name">Fernando Salinas</div>
+        <div class="sig-title">Fundador & CEO</div>
+        <div class="sig-rule"></div>
+        <div class="sig-details">
+          <strong>Vitor<em>ia</em></strong><br>
+          <a href="#">usevitoria.com</a> &middot; fernando@usevitoria.com<br>
+          Cobranza judicial inteligente
+        </div>
+      </div>
+
+      <!-- One-pager -->
+      <h3 style="margin: var(--sp-12) 0 var(--sp-4);">One-Pager</h3>
+      <div class="onepager">
+        <div class="onepager-logo">Vitor<span class="ia">ia</span></div>
+        <div class="onepager-rule"></div>
+        <h3>Infraestructura inteligente<br>de cobranza judicial</h3>
+        <p>Vitoria automatiza la gestión de instrumentos de cobranza judicial en Chile — desde la generación de la demanda hasta la notificación — reduciendo tiempos de semanas a horas.</p>
+        <div class="onepager-stats">
+          <div><div class="stat-num">85%</div><div class="stat-label">Reducción en tiempos de gestión</div></div>
+          <div><div class="stat-num">4</div><div class="stat-label">Clientes activos en operación</div></div>
+          <div><div class="stat-num">0</div><div class="stat-label">Errores documentales reportados</div></div>
+        </div>
+      </div>
+
+      <!-- Slide preview -->
+      <h3 style="margin: var(--sp-12) 0 var(--sp-4);">Preview presentación</h3>
+      <div style="background: var(--coal); border-radius: var(--radius-lg); padding: var(--sp-16) var(--sp-12); color: var(--frost); text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--copper), transparent 60%); opacity: 0.4;"></div>
+        <div style="font-family: var(--sans); font-size: 0.625rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--copper-light); margin-bottom: var(--sp-10);">Vitoria &middot; Propuesta Comercial</div>
+        <div style="font-family: var(--serif); font-size: 2.5rem; line-height: 1.2; max-width: 500px; margin: 0 auto; color: var(--frost);">Automatización de cobranza judicial <em style="font-style: italic; color: var(--copper-light);">a escala</em></div>
+        <div style="margin-top: var(--sp-10); font-size: 0.875rem; color: var(--pewter);">Preparado para [Nombre Cliente] &middot; Marzo 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FOOTER                                      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="foot">
+    <div class="container">
+      <div class="foot-logo">Vitor<span class="ia">ia</span></div>
+      <div class="foot-sub">Brand Bible — Versión 1.0</div>
+      <div class="foot-note">Marzo 2026 &middot; Confidencial &middot; Fuente única de verdad para toda comunicación visual y verbal</div>
+    </div>
+  </section>
+
+</body>
+</html>

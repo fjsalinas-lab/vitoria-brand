@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitoria — Plan de Debut en LinkedIn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coal: #1c2127;
+      --coal-soft: #2e333a;
+      --slate: #4a5260;
+      --pewter: #7a8291;
+      --silver: #b0b5be;
+      --mist: #d9dce1;
+      --frost: #eef0f2;
+      --snow: #f8f9fa;
+      --paper: #fdfdfb;
+      --copper: #b5704d;
+      --copper-deep: #8f5636;
+      --copper-light: #d4956e;
+      --copper-glow: rgba(181,112,77,0.1);
+      --sea: #3a6678;
+      --sea-soft: rgba(58,102,120,0.1);
+      --success: #3d7a5a;
+      --success-soft: rgba(61,122,90,0.1);
+      --serif: 'Libre Baskerville', 'Georgia', serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--coal);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--copper); color: white; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 3rem; }
+
+    /* ─── Hero ─── */
+    .hero {
+      background: var(--coal);
+      color: var(--frost);
+      padding: 6rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -20%;
+      width: 60%; height: 80%;
+      background: radial-gradient(ellipse, rgba(181,112,77,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero .label {
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper-light);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--frost);
+    }
+
+    .hero h1 em { font-style: italic; color: var(--copper-light); }
+
+    .hero .lead {
+      font-size: 1.0625rem;
+      font-weight: 300;
+      color: var(--pewter);
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3.5rem;
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-stat .num {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      color: var(--copper-light);
+    }
+
+    .hero-stat .stat-label {
+      font-size: 0.6875rem;
+      color: var(--pewter);
+      margin-top: 0.2rem;
+    }
+
+    /* ─── Sections ─── */
+    section { padding: 5rem 0; }
+
+    .rule {
+      width: 100%;
+      height: 1px;
+      background: var(--mist);
+      position: relative;
+    }
+    .rule::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      width: 48px; height: 1px;
+      background: var(--copper);
+    }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--coal);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-lead {
+      color: var(--slate);
+      font-size: 1.0625rem;
+      max-width: 540px;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── Profile ─── */
+    .profile {
+      border: 1px solid var(--mist);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .profile-banner {
+      height: 100px;
+      background: var(--coal);
+      display: flex;
+      align-items: flex-end;
+      padding: 0 2rem 1.25rem;
+      position: relative;
+    }
+
+    .profile-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--copper), transparent 60%);
+      opacity: 0.4;
+    }
+
+    .profile-banner span {
+      color: var(--pewter);
+      font-size: 0.8rem;
+    }
+
+    .profile-info { padding: 1.75rem 2rem 2rem; }
+
+    .profile-info h3 {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--coal);
+    }
+
+    .profile-info h3 em { font-style: italic; }
+
+    .profile-tagline {
+      font-size: 0.875rem;
+      color: var(--copper);
+      font-weight: 500;
+      margin-top: 0.15rem;
+    }
+
+    .profile-about {
+      margin-top: 1.25rem;
+      font-size: 0.875rem;
+      color: var(--slate);
+      line-height: 1.8;
+    }
+
+    .profile-meta {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--pewter);
+    }
+
+    .profile-meta strong { color: var(--slate); font-weight: 600; }
+
+    /* ─── Pillars ─── */
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .pillar {
+      padding: 1.75rem 0;
+      border-top: 2px solid var(--mist);
+    }
+
+    .pillar:nth-child(1) { border-color: var(--copper); }
+    .pillar:nth-child(2) { border-color: var(--sea); }
+    .pillar:nth-child(3) { border-color: var(--slate); }
+    .pillar:nth-child(4) { border-color: var(--mist); }
+
+    .pillar .pct {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--pewter);
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar h4 {
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      font-weight: 400;
+      color: var(--coal);
+      margin-bottom: 0.35rem;
+    }
+
+    .pillar p {
+      font-size: 0.875rem;
+      color: var(--pewter);
+      line-height: 1.7;
+    }
+
+    /* ─── Tone ─── */
+    .tone-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--frost);
+    }
+
+    .tone-col h4 {
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .tone-col.yes h4 { color: var(--copper); }
+    .tone-col.no h4 { color: var(--pewter); }
+
+    .tone-col blockquote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.9375rem;
+      color: var(--slate);
+      padding: 0.75rem 0 0.75rem 1rem;
+      border: none;
+      border-left: 2px solid var(--copper);
+      line-height: 1.6;
+    }
+
+    .tone-col blockquote + blockquote { margin-top: 0.75rem; }
+    .tone-col.no blockquote { color: var(--silver); border-left-color: var(--mist); text-decoration: line-through; }
+
+    /* ─── Calendar ─── */
+    .weeks { display: grid; gap: 2.5rem; }
+
+    .week h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--coal);
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--mist);
+      margin-bottom: 0.75rem;
+    }
+
+    .week h4 span {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 0.8125rem;
+      color: var(--pewter);
+      margin-left: 0.5rem;
+    }
+
+    .day {
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+      padding: 0.5rem 0;
+    }
+
+    .day + .day { border-top: 1px solid var(--frost); }
+
+    .day-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: var(--pewter);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      min-width: 28px;
+    }
+
+    .day-content {
+      font-size: 0.875rem;
+      color: var(--slate);
+    }
+
+    .day-tag {
+      display: inline-block;
+      font-size: 0.5625rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .day-tag.setup { background: var(--frost); color: var(--pewter); }
+    .day-tag.post { background: var(--copper-glow); color: var(--copper); }
+    .day-tag.carrusel { background: var(--sea-soft); color: var(--sea); }
+    .day-tag.articulo { background: rgba(138,112,48,0.1); color: #8a7030; }
+    .day-tag.video { background: rgba(148,64,64,0.1); color: #944040; }
+    .day-tag.infografia { background: var(--success-soft); color: var(--success); }
+
+    /* ─── Cadence ─── */
+    .cadence {
+      display: flex;
+      gap: 0;
+      margin-bottom: 3rem;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .cadence-item {
+      flex: 1;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .cadence-item:first-child { background: var(--coal); color: var(--frost); }
+    .cadence-item:nth-child(2) { background: var(--coal-soft); color: var(--frost); }
+    .cadence-item:last-child { background: var(--copper); color: white; }
+
+    .cadence-num {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+    }
+
+    .cadence-label {
+      font-size: 0.6875rem;
+      opacity: 0.6;
+      margin-top: 0.2rem;
+    }
+
+    /* ─── KPI Table ─── */
+    .kpi-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .kpi-table th {
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pewter);
+      padding: 0 0 0.75rem;
+      text-align: left;
+      border-bottom: 2px solid var(--coal);
+    }
+
+    .kpi-table th:not(:first-child) { text-align: center; }
+
+    .kpi-table td {
+      padding: 0.85rem 0;
+      font-size: 0.875rem;
+      border-bottom: 1px solid var(--frost);
+    }
+
+    .kpi-table td:first-child { color: var(--slate); font-weight: 500; }
+
+    .kpi-table td:not(:first-child) {
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.8125rem;
+      color: var(--copper-deep);
+    }
+
+    .kpi-table tr:last-child td { border-bottom: none; }
+
+    /* ─── Tactics ─── */
+    .tactics {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .tactic h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--coal);
+      margin-bottom: 0.75rem;
+    }
+
+    .tactic ul { list-style: none; padding: 0; }
+
+    .tactic li {
+      font-size: 0.8125rem;
+      color: var(--pewter);
+      padding: 0.4rem 0;
+      line-height: 1.6;
+    }
+
+    .tactic li + li { border-top: 1px solid var(--frost); }
+
+    /* ─── Phases ─── */
+    .phases {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .phase {
+      padding: 2rem;
+      border-radius: 10px;
+      border: 1px solid var(--mist);
+      background: var(--snow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phase::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      opacity: 0.4;
+    }
+
+    .phase-now::before { background: var(--copper); }
+    .phase-later::before { background: var(--mist); }
+
+    .phase .phase-label {
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .phase-now .phase-label { color: var(--copper); }
+    .phase-later .phase-label { color: var(--pewter); }
+
+    .phase h4 {
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      font-weight: 400;
+      color: var(--coal);
+      margin-bottom: 0.5rem;
+    }
+
+    .phase p {
+      font-size: 0.875rem;
+      color: var(--pewter);
+      line-height: 1.7;
+    }
+
+    /* ─── Steps ─── */
+    .steps { display: grid; gap: 0; counter-reset: step; }
+
+    .step {
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+      padding: 1rem 0;
+      counter-increment: step;
+    }
+
+    .step + .step { border-top: 1px solid var(--frost); }
+
+    .step::before {
+      content: counter(step);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--silver);
+      min-width: 24px;
+    }
+
+    .step-text { font-size: 0.9375rem; color: var(--slate); }
+    .step-text strong { font-weight: 600; color: var(--coal); }
+
+    /* ─── Footer ─── */
+    .footer {
+      padding: 3rem 0;
+      text-align: center;
+      border-top: 1px solid var(--frost);
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--coal);
+    }
+
+    .footer-logo em { font-style: italic; }
+
+    .footer-sub {
+      font-size: 0.6875rem;
+      color: var(--pewter);
+      margin-top: 0.35rem;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .hero-stats { flex-direction: column; gap: 1.5rem; }
+      .container { padding: 0 1.5rem; }
+      .pillars, .phases, .tone-row { grid-template-columns: 1fr; }
+      .tactics { grid-template-columns: 1fr; }
+      .cadence { flex-direction: column; }
+      .cadence-item:first-child { border-radius: 10px 10px 0 0; }
+      .cadence-item:last-child { border-radius: 0 0 10px 10px; }
+    }
+
+    @media print {
+      section { padding: 2rem 0; break-inside: avoid; }
+      .hero { padding: 3rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="label">Estrategia LinkedIn &middot; 2026</div>
+      <h1>Plan de debut<br>en <em>LinkedIn</em></h1>
+      <p class="lead">Posicionar a Vitoria frente a estudios de abogados de cobranza judicial en Chile. De cero presencia a canal de captacion de clientes en 90 dias.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">90</div>
+          <div class="stat-label">Dias de horizonte</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">3/sem</div>
+          <div class="stat-label">Posts por semana</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">45%</div>
+          <div class="stat-label">Foco en industria</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">10</div>
+          <div class="stat-label">Estudios target</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Perfil -->
+  <section>
+    <div class="container">
+      <span class="section-label">01 &mdash; Configuracion</span>
+      <h2>Perfil de empresa</h2>
+      <p class="section-lead">La pagina de Vitoria en LinkedIn, alineada con la identidad Charcoal &amp; Copper.</p>
+
+      <div class="profile">
+        <div class="profile-banner">
+          <span>Cobranza judicial inteligente, impulsada por IA</span>
+        </div>
+        <div class="profile-info">
+          <h3>Vitor<em>ia</em></h3>
+          <div class="profile-tagline">Cobranza judicial inteligente, impulsada por IA</div>
+          <p class="profile-about">Vitoria automatiza la cobranza judicial en Chile. Desde la lectura de documentos financieros hasta la generacion de demandas listas para tribunales, nuestra plataforma de IA transforma un proceso masivo y manual en un flujo operacional estandarizado y controlable.</p>
+          <div class="profile-meta">
+            <span><strong>Industria</strong> Legal Technology</span>
+            <span><strong>Tamano</strong> 2-10 empleados</span>
+            <span><strong>Web</strong> usevitoria.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 900px;"></div>
+
+  <!-- Audiencia Target -->
+  <section>
+    <div class="container">
+      <span class="section-label">02 &mdash; Audiencia target</span>
+      <h2>Estudios de abogados de cobranza</h2>
+      <p class="section-lead">El contenido habla directamente a socios, jefes de litigacion y equipos operativos de estudios juridicos que manejan cobranza judicial masiva.</p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pct">Perfil primario</div>
+          <h4>Socios y directores</h4>
+          <p>Tomadores de decision en estudios de 5-50 abogados. Buscan eficiencia operativa, reducir costos de preparacion de demandas y escalar sin contratar mas personal.</p>
+        </div>
+        <div class="pillar">
+          <div class="pct">Perfil secundario</div>
+          <h4>Jefes de litigacion</h4>
+          <p>Responsables de la operacion diaria. Les duele el cuello de botella en la preparacion de escritos. Evaluan herramientas por precision y velocidad.</p>
+        </div>
+        <div class="pillar">
+          <div class="pct">Estudios activos</div>
+          <h4>Clientes referencia</h4>
+          <p>DNPV Abogados, Abogabir y Cia, Ocampo y Cia. Estudios de cobranza que ya operan con Vitoria y pueden servir como casos de exito anonimizados.</p>
+        </div>
+        <div class="pillar">
+          <div class="pct">Pipeline</div>
+          <h4>Estudios de alto volumen</h4>
+          <p>Estudios como Dell'Oro (600-800 causas/mes, 18 abogados) que procesan carteras masivas de cobranza. El contenido debe resonar con su escala y complejidad operativa.</p>
+        </div>
+      </div>
+
+      <div class="tone-row">
+        <div class="tone-col yes">
+          <h4>Coordinacion comercial</h4>
+          <blockquote>La estrategia de LinkedIn se ejecuta en conjunto con el Commercial Director. El contenido alimenta el pipeline y los leads se canalizan al equipo de ventas para seguimiento directo.</blockquote>
+        </div>
+        <div class="tone-col no">
+          <h4>Hashtags target</h4>
+          <blockquote style="text-decoration: none; color: var(--slate);">#CobranzaJudicial #DerechoProcesal #LegalTech #GestionJuridica #AutomatizacionLegal</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 900px;"></div>
+
+  <!-- Pilares -->
+  <section>
+    <div class="container">
+      <span class="section-label">03 &mdash; Estrategia de contenido</span>
+      <h2>Cuatro pilares</h2>
+      <p class="section-lead">Cada pilar tiene un peso y un objetivo. La combinacion genera autoridad, educacion y confianza.</p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pct">45% &middot; Autoridad</div>
+          <h4>Industria &amp; Datos</h4>
+          <p>Datos que le importan a un estudio de cobranza: volumen de causas en PJUD, tiempos promedio de tramitacion, tasas de recupero por tipo de documento. Insights que un socio puede usar en su proxima reunion de directorio.</p>
+        </div>
+        <div class="pillar">
+          <div class="pct">25% &middot; Educacion</div>
+          <h4>Producto &amp; Tecnologia</h4>
+          <p>Como un estudio pasa de preparar demandas a mano a automatizar con IA. Demos del flujo pagare y mutuo, tiempos reales de procesamiento, cero errores formales.</p>
+        </div>
+        <div class="pillar">
+          <div class="pct">20% &middot; Confianza</div>
+          <h4>Casos &amp; Resultados</h4>
+          <p>Estudios que procesan 5x mas demandas con el mismo equipo. Metricas reales de clientes activos: tiempo por demanda, volumen mensual, reduccion de errores formales.</p>
+        </div>
+        <div class="pillar">
+          <div class="pct">10% &middot; Conexion</div>
+          <h4>Vision &amp; Futuro</h4>
+          <p>Vision Service as Software, reflexiones sobre hacia donde va la industria legal. Foco en la industria, no en personas.</p>
+        </div>
+      </div>
+
+      <!-- Tono -->
+      <div class="tone-row">
+        <div class="tone-col yes">
+          <h4>Asi hablamos</h4>
+          <blockquote>En Chile se presentan mas de 750.000 demandas de cobranza al ano. Si tu estudio las prepara a mano, estas dejando capacidad en la mesa.</blockquote>
+          <blockquote>Un estudio de cobranza con 3 abogados puede procesar el volumen de uno con 15. Asi funciona la automatizacion de demandas ejecutivas.</blockquote>
+        </div>
+        <div class="tone-col no">
+          <h4>Asi no</h4>
+          <blockquote>Estamos revolucionando la industria legal con nuestra solucion disruptiva.</blockquote>
+          <blockquote>Nuestra plataforma next-gen powered by AI transforma el paradigma legal.</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 900px;"></div>
+
+  <!-- Calendario -->
+  <section>
+    <div class="container">
+      <span class="section-label">04 &mdash; Calendario de lanzamiento</span>
+      <h2>Primeras 4 semanas</h2>
+      <p class="section-lead">De setup a primeros resultados. Cada semana tiene un foco tematico.</p>
+
+      <div class="cadence">
+        <div class="cadence-item">
+          <div class="cadence-num">3</div>
+          <div class="cadence-label">Posts por semana</div>
+        </div>
+        <div class="cadence-item">
+          <div class="cadence-num">45%</div>
+          <div class="cadence-label">Foco en industria</div>
+        </div>
+        <div class="cadence-item">
+          <div class="cadence-num">4</div>
+          <div class="cadence-label">Pilares alternados</div>
+        </div>
+      </div>
+
+      <div class="weeks">
+        <div class="week">
+          <h4>Semana 0 <span>Pre-lanzamiento</span></h4>
+          <div class="day"><span class="day-label"></span><span class="day-content">Crear pagina de empresa en LinkedIn <span class="day-tag setup">Setup</span></span></div>
+          <div class="day"><span class="day-label"></span><span class="day-content">Configurar perfil completo: logo, banner, about, URL <span class="day-tag setup">Setup</span></span></div>
+          <div class="day"><span class="day-label"></span><span class="day-content">Vincular perfiles del equipo <span class="day-tag setup">Setup</span></span></div>
+          <div class="day"><span class="day-label"></span><span class="day-content">Preparar banco de 8-10 posts <span class="day-tag setup">Setup</span></span></div>
+        </div>
+
+        <div class="week">
+          <h4>Semana 1 <span>Debut</span></h4>
+          <div class="day"><span class="day-label">Lun</span><span class="day-content">750.000 demandas al ano: el cuello de botella de los estudios de cobranza <span class="day-tag post">Post</span></span></div>
+          <div class="day"><span class="day-label">Mie</span><span class="day-content">Anatomia de una demanda ejecutiva: que pasos se pueden automatizar <span class="day-tag carrusel">Carrusel</span></span></div>
+          <div class="day"><span class="day-label">Vie</span><span class="day-content">Dato de PJUD: tiempo promedio de tramitacion por tipo de documento <span class="day-tag post">Post</span></span></div>
+        </div>
+
+        <div class="week">
+          <h4>Semana 2 <span>Producto</span></h4>
+          <div class="day"><span class="day-label">Mar</span><span class="day-content">Un estudio recibe 200 pagares: asi se ven 4 horas vs 15 minutos <span class="day-tag post">Post</span></span></div>
+          <div class="day"><span class="day-label">Jue</span><span class="day-content">Demo: de pagare escaneado a demanda lista para tribunales <span class="day-tag video">Video</span></span></div>
+        </div>
+
+        <div class="week">
+          <h4>Semana 3 <span>Industria profunda</span></h4>
+          <div class="day"><span class="day-label">Lun</span><span class="day-content">Por que los estudios de cobranza que no automatizan van a perder clientes <span class="day-tag articulo">Articulo</span></span></div>
+          <div class="day"><span class="day-label">Mie</span><span class="day-content">Cuantas causas puede manejar un abogado: benchmark por tipo de estudio <span class="day-tag post">Post</span></span></div>
+          <div class="day"><span class="day-label">Vie</span><span class="day-content">Evolucion de causas de cobranza en los ultimos 5 anos <span class="day-tag infografia">Infografia</span></span></div>
+        </div>
+
+        <div class="week">
+          <h4>Semana 4 <span>Resultados</span></h4>
+          <div class="day"><span class="day-label">Mar</span><span class="day-content">Un estudio procesaba 50 demandas al mes. Con Vitoria, ahora procesa 250 <span class="day-tag post">Post</span></span></div>
+          <div class="day"><span class="day-label">Jue</span><span class="day-content">Que diferencia a un estudio de cobranza que escala de uno que no <span class="day-tag post">Post</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 900px;"></div>
+
+  <!-- Tacticas -->
+  <section>
+    <div class="container">
+      <span class="section-label">05 &mdash; Crecimiento</span>
+      <h2>Tacticas organicas</h2>
+      <p class="section-lead">Sin presupuesto pagado. Crecimiento basado en contenido y engagement estrategico.</p>
+
+      <div class="tactics">
+        <div class="tactic">
+          <h4>Engagement</h4>
+          <ul>
+            <li>Comentar en posts de socios de estudios de abogados</li>
+            <li>Participar en grupos de derecho procesal y cobranza</li>
+            <li>Interactuar con publicaciones del Colegio de Abogados</li>
+            <li>Newsletter de LinkedIn despues del mes 2</li>
+          </ul>
+        </div>
+        <div class="tactic">
+          <h4>Coord. comercial</h4>
+          <ul>
+            <li>Leads de LinkedIn se canalizan al Commercial Director</li>
+            <li>Contenido alineado con pipeline de ventas activo</li>
+            <li>Posts refuerzan reuniones agendadas con prospectos</li>
+          </ul>
+        </div>
+        <div class="tactic">
+          <h4>Conexiones target</h4>
+          <ul>
+            <li>Socios de estudios de cobranza en Santiago y regiones</li>
+            <li>Jefes de litigacion y operaciones legales</li>
+            <li>Jefes de operaciones en estudios con alto volumen de causas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 900px;"></div>
+
+  <!-- KPIs -->
+  <section>
+    <div class="container">
+      <span class="section-label">06 &mdash; Metricas</span>
+      <h2>KPIs a 90 dias</h2>
+      <p class="section-lead">Metas progresivas. El foco inicial es construir base; los leads llegan a partir del mes 2.</p>
+
+      <table class="kpi-table">
+        <thead>
+          <tr>
+            <th>Metrica</th>
+            <th>30 dias</th>
+            <th>60 dias</th>
+            <th>90 dias</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Seguidores de pagina</td><td>100</td><td>300</td><td>500</td></tr>
+          <tr><td>Impresiones / semana</td><td>2.000</td><td>5.000</td><td>10.000</td></tr>
+          <tr><td>Engagement rate</td><td>&gt;3%</td><td>&gt;3%</td><td>&gt;3%</td></tr>
+          <tr><td>Conexiones estrategicas</td><td>50</td><td>150</td><td>300</td></tr>
+          <tr><td>Leads inbound</td><td>2</td><td>5</td><td>10</td></tr>
+          <tr><td>Posts publicados</td><td>12</td><td>24</td><td>36</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 900px;"></div>
+
+  <!-- Equipo -->
+  <section>
+    <div class="container">
+      <span class="section-label">07 &mdash; Equipo</span>
+      <h2>Contratacion RRSS</h2>
+      <p class="section-lead">No contratar ahora. Evaluar freelance en mes 3+.</p>
+
+      <div class="phases">
+        <div class="phase phase-now">
+          <div class="phase-label">Ahora &mdash; Mes 1-2</div>
+          <h4>No contratar</h4>
+          <p>La voz debe ser de la marca Vitoria como experta en el sector. El Brand Manager prepara contenidos, copy y calendario. El equipo revisa y publica.</p>
+        </div>
+        <div class="phase phase-later">
+          <div class="phase-label">Mes 3+</div>
+          <h4>Evaluar freelance</h4>
+          <p>Si hay traccion y leads, considerar un community manager freelance part-time. Experiencia en B2B SaaS o legaltech, LinkedIn, espanol nativo. CLP 500.000 - 800.000/mes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" style="margin: 0 auto; max-width: 900px;"></div>
+
+  <!-- Proximos pasos -->
+  <section>
+    <div class="container">
+      <span class="section-label">08 &mdash; Proximos pasos</span>
+      <h2>Acciones inmediatas</h2>
+
+      <div class="steps">
+        <div class="step"><span class="step-text"><strong>Aprobar este plan</strong> &mdash; ajustar tono, frecuencia o prioridades si es necesario</span></div>
+        <div class="step"><span class="step-text"><strong>Alinear con Commercial Director</strong> &mdash; coordinar calendario editorial con pipeline de ventas y estudios target</span></div>
+        <div class="step"><span class="step-text"><strong>Crear la pagina de LinkedIn</strong> &mdash; se necesita acceso o que alguien del equipo la cree</span></div>
+        <div class="step"><span class="step-text"><strong>Preparar los primeros 8-10 posts</strong> &mdash; enfocados en dolor de estudios de cobranza</span></div>
+        <div class="step"><span class="step-text"><strong>Definir quien publica</strong> &mdash; alguien del equipo con acceso a la pagina</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">Vitor<em>ia</em></div>
+      <div class="footer-sub">Plan de Debut en LinkedIn &middot; Marzo 2026</div>
+    </div>
+  </footer>
+
+</body>
+</html>

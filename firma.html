@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firma de Correo — Vitoria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      color: #1c2127;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .page-title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.5rem;
+      color: #1c2127;
+      margin-bottom: 0.5rem;
+    }
+    .page-subtitle {
+      font-size: 0.875rem;
+      color: #7a8291;
+      margin-bottom: 2rem;
+    }
+
+    .sig-container {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 2.5rem;
+      max-width: 600px;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .instructions {
+      max-width: 600px;
+      width: 100%;
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .instructions h3 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.125rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: #1c2127;
+    }
+    .instructions ol {
+      padding-left: 1.25rem;
+      color: #4a5260;
+      font-size: 0.875rem;
+      line-height: 1.8;
+    }
+    .instructions li { margin-bottom: 0.5rem; }
+    .instructions strong { color: #1c2127; }
+    .instructions code {
+      background: #eef0f2;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.8125rem;
+    }
+
+    .edit-note {
+      max-width: 600px;
+      width: 100%;
+      background: rgba(181,112,77,0.06);
+      border: 1px solid rgba(181,112,77,0.15);
+      border-radius: 8px;
+      padding: 1.25rem;
+      font-size: 0.8125rem;
+      color: #4a5260;
+      line-height: 1.7;
+    }
+    .edit-note strong { color: #b5704d; }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-size: 0.6875rem;
+      color: #b0b5be;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-title">Firma de Correo</div>
+  <div class="page-subtitle">Vitoria — Selecciona todo el contenido de abajo, copia y pega en tu cliente de correo</div>
+
+  <!-- ═══ SIGNATURE START — Copy from here ═══ -->
+  <div class="sig-container" id="signature">
+
+    <table cellpadding="0" cellspacing="0" border="0" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; color: #1c2127; font-size: 14px; line-height: 1.4;">
+      <tr>
+        <td style="padding-bottom: 2px;">
+          <span style="font-family: Georgia, 'Times New Roman', serif; font-size: 16px; font-weight: normal; color: #1c2127;">Fernando Salinas</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-bottom: 12px;">
+          <span style="font-size: 12px; color: #7a8291; letter-spacing: 0.02em;">Fundador & CEO</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-bottom: 12px;">
+          <div style="width: 24px; height: 1px; background-color: #b5704d; opacity: 0.5;"></div>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-size: 13px; color: #4a5260; line-height: 1.8;">
+          <span style="font-family: Georgia, 'Times New Roman', serif; font-weight: normal; color: #1c2127;">Vitor<em style="font-style: italic;">ia</em></span><br>
+          <a href="https://usevitoria.com" style="color: #b5704d; text-decoration: none;">usevitoria.com</a>
+          <span style="color: #b0b5be;"> · </span>
+          <a href="mailto:fernando@usevitoria.com" style="color: #4a5260; text-decoration: none;">fernando@usevitoria.com</a><br>
+          <span style="font-size: 12px; color: #7a8291;">Cobranza judicial inteligente</span>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+  <!-- ═══ SIGNATURE END ═══ -->
+
+  <div class="instructions">
+    <h3>Cómo usarla</h3>
+    <ol>
+      <li><strong>Selecciona</strong> todo el contenido dentro del recuadro blanco de arriba (Ctrl/Cmd + A dentro del área)</li>
+      <li><strong>Copia</strong> (Ctrl/Cmd + C)</li>
+      <li>Abre la <strong>configuración de firma</strong> de tu correo:
+        <ul style="list-style: none; padding-left: 0; margin-top: 0.5rem;">
+          <li>Gmail: <code>Configuración → General → Firma</code></li>
+          <li>Outlook: <code>Configuración → Correo → Redactar y responder → Firma</code></li>
+          <li>Apple Mail: <code>Preferencias → Firmas</code></li>
+        </ul>
+      </li>
+      <li><strong>Pega</strong> (Ctrl/Cmd + V) en el editor de firma</li>
+      <li><strong>Personaliza</strong> tu nombre y cargo si es necesario</li>
+    </ol>
+  </div>
+
+  <div class="edit-note">
+    <strong>Para personalizar:</strong> Cambia "Fernando Salinas" por tu nombre y "Fundador & CEO" por tu cargo. Mantén todo lo demás igual — la tipografía, los colores y el layout son parte de la identidad de marca de Vitoria.
+  </div>
+
+  <div class="footer-note">Vitoria · Brand Bible v1.0 · Marzo 2026</div>
+
+</body>
+</html>
