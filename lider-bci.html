@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitoria &mdash; Propuesta L&iacute;der BCI</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --coal: #1c2127;
+  --coal-soft: #2e333a;
+  --slate: #4a5260;
+  --pewter: #7a8291;
+  --silver: #b0b5be;
+  --mist: #d9dce1;
+  --frost: #eef0f2;
+  --snow: #f8f9fa;
+  --paper: #fdfdfb;
+  --copper: #b5704d;
+  --copper-deep: #8f5636;
+  --copper-light: #d4956e;
+  --copper-glow: rgba(181,112,77,0.10);
+  --copper-subtle: rgba(181,112,77,0.05);
+  --sea: #3a6678;
+  --sea-soft: rgba(58,102,120,0.10);
+  --success: #3d7a5a;
+  --success-soft: rgba(61,122,90,0.10);
+  --error: #944040;
+  --error-soft: rgba(148,64,64,0.10);
+  --warning: #8a7030;
+  --warning-soft: rgba(138,112,48,0.10);
+  --font-serif: 'Libre Baskerville', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  color: var(--coal);
+  background: var(--coal);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Slide System ── */
+.slide {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 96px;
+  position: relative;
+  overflow: hidden;
+}
+.slide--dark {
+  background: var(--coal);
+  color: var(--frost);
+}
+.slide--light {
+  background: var(--paper);
+  color: var(--coal);
+}
+.slide--frost {
+  background: var(--frost);
+  color: var(--coal);
+}
+
+/* ── Typography ── */
+h1 {
+  font-family: var(--font-serif);
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+h2 {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+h3 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+h4 {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--copper);
+}
+p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--slate);
+}
+.slide--dark p { color: var(--silver); }
+.slide--dark h4 { color: var(--copper-light); }
+
+/* ── Copper Line ── */
+.copper-line {
+  width: 48px;
+  height: 1px;
+  background: var(--copper);
+  margin: 24px 0;
+}
+
+/* ── Logo ── */
+.logo {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  letter-spacing: -0.01em;
+}
+.logo i { font-style: italic; }
+
+/* ── Cover ── */
+.cover {
+  justify-content: flex-end;
+  padding-bottom: 120px;
+  background: linear-gradient(165deg, #1c2127 0%, #252a31 40%, #2e333a 100%);
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(181,112,77,0.06) 0%, transparent 70%);
+}
+.cover .logo {
+  font-size: 24px;
+  color: var(--frost);
+  position: absolute;
+  top: 48px;
+  left: 96px;
+}
+.cover .confidential {
+  position: absolute;
+  top: 52px;
+  right: 96px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--pewter);
+}
+.cover h1 {
+  color: var(--frost);
+  font-size: 64px;
+  max-width: 800px;
+  margin-bottom: 24px;
+}
+.cover h1 em {
+  font-style: italic;
+  color: var(--copper-light);
+}
+.cover .subtitle {
+  font-size: 20px;
+  color: var(--pewter);
+  max-width: 600px;
+  line-height: 1.6;
+}
+.cover .meta {
+  position: absolute;
+  bottom: 48px;
+  left: 96px;
+  font-size: 14px;
+  color: var(--pewter);
+}
+.cover .meta span {
+  margin-right: 32px;
+}
+
+/* ── Section Header ── */
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--copper);
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+/* ── Stats Row ── */
+.stats-row {
+  display: flex;
+  gap: 48px;
+  margin: 48px 0;
+}
+.stat {
+  flex: 1;
+}
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--copper);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.slide--light .stat-value { color: var(--coal); }
+.stat-label {
+  font-size: 14px;
+  color: var(--pewter);
+  line-height: 1.5;
+}
+
+/* ── Pain Points ── */
+.pain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+.pain-card {
+  background: var(--coal-soft);
+  border-radius: 10px;
+  padding: 32px;
+  border-left: 3px solid var(--copper);
+}
+.pain-card h3 {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--frost);
+  margin-bottom: 12px;
+}
+.pain-card p {
+  font-size: 15px;
+  color: var(--silver);
+  line-height: 1.6;
+}
+
+/* ── Dashboard Mockup ── */
+.dashboard-frame {
+  background: var(--paper);
+  border-radius: 12px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+  overflow: hidden;
+  margin-top: 32px;
+}
+.dashboard-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--coal);
+  color: var(--frost);
+}
+.dashboard-topbar .logo { font-size: 20px; }
+.dashboard-topbar .user {
+  font-size: 13px;
+  color: var(--pewter);
+}
+.dashboard-body {
+  padding: 32px;
+}
+
+/* ── KPI Cards ── */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.kpi-card {
+  background: var(--snow);
+  border: 1px solid var(--mist);
+  border-radius: 8px;
+  padding: 20px;
+}
+.kpi-card .kpi-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--pewter);
+  margin-bottom: 8px;
+}
+.kpi-card .kpi-value {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--coal);
+  line-height: 1;
+}
+.kpi-card .kpi-change {
+  font-size: 12px;
+  margin-top: 6px;
+}
+.kpi-change.up { color: var(--success); }
+.kpi-change.down { color: var(--error); }
+
+/* ── Chart Areas ── */
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+.chart-card {
+  background: var(--snow);
+  border: 1px solid var(--mist);
+  border-radius: 8px;
+  padding: 24px;
+}
+.chart-card h5 {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+  margin-bottom: 16px;
+}
+.chart-card canvas {
+  width: 100% !important;
+  max-height: 240px;
+}
+.chart-card-full {
+  grid-column: 1 / -1;
+}
+
+/* ── Pipeline / Funnel ── */
+.funnel {
+  display: flex;
+  gap: 4px;
+  margin: 32px 0 16px;
+  align-items: flex-end;
+  height: 180px;
+}
+.funnel-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+.funnel-bar {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+  transition: height 0.6s ease;
+}
+.funnel-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+  margin-top: 12px;
+  text-align: center;
+}
+.funnel-count {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--coal);
+  margin-top: 4px;
+}
+
+/* ── Table ── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 16px;
+}
+.data-table th {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pewter);
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--mist);
+}
+.data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--frost);
+  color: var(--coal);
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table .mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.badge--success { background: var(--success-soft); color: var(--success); }
+.badge--warning { background: var(--warning-soft); color: var(--warning); }
+.badge--error { background: var(--error-soft); color: var(--error); }
+.badge--sea { background: var(--sea-soft); color: var(--sea); }
+
+/* ── Timeline ── */
+.timeline {
+  display: flex;
+  gap: 0;
+  margin: 48px 0 24px;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--mist);
+}
+.slide--dark .timeline::before { background: var(--coal-soft); }
+.timeline-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 16px;
+}
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--copper);
+  margin: 22px auto;
+  position: relative;
+  z-index: 1;
+}
+.timeline-dot.future {
+  background: var(--mist);
+  border: 2px solid var(--copper);
+}
+.slide--dark .timeline-dot.future { background: var(--coal-soft); }
+.timeline-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.timeline-desc {
+  font-size: 13px;
+  color: var(--pewter);
+  line-height: 1.5;
+}
+
+/* ── Two-Col Layout ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ── Feature List ── */
+.feature-list {
+  list-style: none;
+  margin-top: 24px;
+}
+.feature-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--frost);
+  font-size: 16px;
+  color: var(--slate);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.slide--dark .feature-list li {
+  border-bottom-color: rgba(255,255,255,0.06);
+  color: var(--silver);
+}
+.feature-list .check {
+  color: var(--copper);
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Impact Box ── */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+.impact-card {
+  background: rgba(181,112,77,0.05);
+  border: 1px solid rgba(181,112,77,0.15);
+  border-radius: 10px;
+  padding: 32px;
+  text-align: center;
+}
+.impact-card .stat-value {
+  font-size: 40px;
+  color: var(--copper);
+}
+.impact-card p {
+  font-size: 15px;
+  color: var(--slate);
+  margin-top: 8px;
+}
+
+/* ── CTA Slide ── */
+.cta-slide {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.cta-slide h1 {
+  max-width: 700px;
+  margin-bottom: 24px;
+}
+.cta-slide .copper-line {
+  margin: 24px auto;
+}
+.cta-contacts {
+  display: flex;
+  gap: 64px;
+  justify-content: center;
+  margin-top: 48px;
+}
+.contact-card {
+  text-align: center;
+}
+.contact-card .name {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--frost);
+}
+.contact-card .role {
+  font-size: 13px;
+  color: var(--pewter);
+  margin-top: 4px;
+}
+.contact-card .email {
+  font-size: 14px;
+  color: var(--copper-light);
+  margin-top: 8px;
+  text-decoration: none;
+}
+
+/* ── Slide Counter ── */
+.slide-number {
+  position: absolute;
+  bottom: 32px;
+  right: 48px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--pewter);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .slide { padding: 48px; }
+  h1 { font-size: 40px; }
+  h2 { font-size: 32px; }
+  .cover h1 { font-size: 44px; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .pain-grid { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; gap: 32px; }
+  .chart-grid { grid-template-columns: 1fr; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .stats-row { flex-wrap: wrap; gap: 24px; }
+}
+
+/* ── Print / PDF ── */
+@media print {
+  .slide {
+    page-break-after: always;
+    min-height: 100vh;
+    break-inside: avoid;
+  }
+  body { background: white; }
+}
+
+/* ── Comparison Table ── */
+.comparison-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--frost);
+}
+.slide--dark .comparison-row { border-bottom-color: rgba(255,255,255,0.06); }
+.comparison-row > div {
+  padding: 16px 20px;
+  font-size: 15px;
+}
+.comparison-header {
+  font-weight: 600;
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pewter) !important;
+  border-bottom: 2px solid var(--mist) !important;
+}
+.slide--dark .comparison-header { border-bottom-color: rgba(255,255,255,0.1) !important; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 1 — COVER                             -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide cover slide--dark">
+  <div class="logo">Vitor<i>ia</i></div>
+  <div class="confidential">Confidencial</div>
+  <h4>Propuesta para L&iacute;der BCI</h4>
+  <div class="copper-line"></div>
+  <h1>Visibilidad total<br>de su <em>cartera judicial</em></h1>
+  <p class="subtitle">Convertimos la cobranza judicial en un proceso medible, auditable y optimizable &mdash; sin cambiar su operaci&oacute;n actual.</p>
+  <div class="meta">
+    <span>Abril 2026</span>
+    <span>Para: Rafael Mardones, Gerente General</span>
+  </div>
+  <div class="slide-number">01</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 2 — THE PROBLEM                       -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--dark">
+  <div class="section-number">02</div>
+  <h4>El Problema</h4>
+  <div class="copper-line"></div>
+  <h2>Su cartera judicial es una <br>caja negra de miles de millones</h2>
+  <p style="max-width:680px;margin-top:16px;">
+    L&iacute;der BCI env&iacute;a ~$72.000M CLP al a&ntilde;o a cobranza judicial y recupera un estimado del 15%. <br>Pero no tiene visibilidad sobre qu&eacute; pasa entre que se radica la demanda y se recupera &mdash;o se pierde&mdash; el dinero.
+  </p>
+
+  <div class="pain-grid">
+    <div class="pain-card">
+      <h3>Sin visibilidad en tiempo real</h3>
+      <p>No saben en qu&eacute; etapa procesal est&aacute; cada una de las miles de causas activas. La informaci&oacute;n llega tard&iacute;a y filtrada por los propios estudios jur&iacute;dicos.</p>
+    </div>
+    <div class="pain-card">
+      <h3>Provisionamiento a ciegas</h3>
+      <p>Provisionan por tramo de mora (norma CMF), no por estado procesal real. Una causa con bienes embargados y otra sin notificar tienen el mismo tratamiento.</p>
+    </div>
+    <div class="pain-card">
+      <h3>Imposible auditar estudios</h3>
+      <p>Los reportes los preparan quienes tienen incentivo a ocultar ineficiencias. No hay benchmark objetivo entre estudios ni contra la competencia.</p>
+    </div>
+    <div class="pain-card">
+      <h3>Sin inteligencia para decidir</h3>
+      <p>&iquest;Qu&eacute; causas vale la pena judicializar? &iquest;Qu&eacute; estudio funciona mejor en qu&eacute; tribunal? Hoy esas decisiones se toman por inercia.</p>
+    </div>
+  </div>
+  <div class="slide-number">02</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 3 — WHAT WE EXTRACT                  -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--dark">
+  <div class="section-number">03</div>
+  <h4>Nuestra capacidad</h4>
+  <div class="copper-line"></div>
+  <h2>Ya extraemos toda esta informaci&oacute;n<br>del Poder Judicial &mdash; autom&aacute;ticamente</h2>
+  <p style="max-width:700px;margin-top:16px;margin-bottom:40px;">
+    Sin que L&iacute;der BCI nos entregue ning&uacute;n dato propio, podemos reconstruir su cartera completa de causas judiciales con datos p&uacute;blicos del portal pjud.cl.
+  </p>
+
+  <div class="two-col">
+    <div>
+      <ul class="feature-list">
+        <li><span class="check">&#10003;</span> N&uacute;mero de rol de cada causa</li>
+        <li><span class="check">&#10003;</span> Car&aacute;tula: ejecutante vs. ejecutado</li>
+        <li><span class="check">&#10003;</span> Tribunal asignado y ciudad</li>
+        <li><span class="check">&#10003;</span> Estado procesal (activa, terminada, archivada)</li>
+        <li><span class="check">&#10003;</span> Texto completo de resoluciones</li>
+      </ul>
+    </div>
+    <div>
+      <ul class="feature-list">
+        <li><span class="check">&#10003;</span> Historial de actuaciones y fechas</li>
+        <li><span class="check">&#10003;</span> Embargos trabados (tipo de bien, fecha)</li>
+        <li><span class="check">&#10003;</span> Alzamientos de embargo</li>
+        <li><span class="check">&#10003;</span> Receptores judiciales asignados</li>
+        <li><span class="check">&#10003;</span> Cuaderno principal y ejecutivo</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-number">03</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 4 — DASHBOARD: OVERVIEW               -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--frost" style="padding:48px;">
+  <div class="section-number">04</div>
+  <h4 style="margin-bottom:8px;">Etapa 1 &mdash; Dashboard de Visibilidad Judicial</h4>
+  <h3 style="margin-bottom:4px;">As&iacute; se ver&iacute;a su cartera en Vitoria</h3>
+
+  <div class="dashboard-frame">
+    <div class="dashboard-topbar">
+      <div class="logo">Vitor<i>ia</i></div>
+      <div style="display:flex;gap:32px;align-items:center;">
+        <span style="font-size:13px;color:var(--copper-light);">Dashboard Judicial</span>
+        <span style="font-size:13px;color:var(--pewter);">Estudios</span>
+        <span style="font-size:13px;color:var(--pewter);">Causas</span>
+        <span style="font-size:13px;color:var(--pewter);">Alertas</span>
+      </div>
+      <div class="user">R. Mardones &bull; L&iacute;der BCI</div>
+    </div>
+    <div class="dashboard-body">
+      <!-- KPI Row -->
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-label">Causas activas</div>
+          <div class="kpi-value">34.218</div>
+          <div class="kpi-change up">&#8593; 1.240 nuevas este mes</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Monto en cobranza</div>
+          <div class="kpi-value">$68.4B</div>
+          <div class="kpi-change" style="color:var(--slate);">CLP activos en cartera judicial</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Causas con embargo</div>
+          <div class="kpi-value">12.847</div>
+          <div class="kpi-change up">37.5% del total &mdash; se&ntilde;al de recupero</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Causas estancadas (&gt;90d)</div>
+          <div class="kpi-value">4.621</div>
+          <div class="kpi-change down">13.5% sin movimiento</div>
+        </div>
+      </div>
+
+      <!-- Funnel -->
+      <div style="background:var(--snow);border:1px solid var(--mist);border-radius:8px;padding:24px;margin-bottom:24px;">
+        <h5 style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--slate);margin-bottom:8px;">Distribuci&oacute;n por etapa procesal</h5>
+        <div class="funnel">
+          <div class="funnel-step">
+            <div class="funnel-bar" style="height:160px;background:var(--copper);"></div>
+            <div class="funnel-count">12.460</div>
+            <div class="funnel-label">Demanda<br>presentada</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-bar" style="height:130px;background:var(--copper-deep);"></div>
+            <div class="funnel-count">9.834</div>
+            <div class="funnel-label">Mandamiento<br>despachado</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-bar" style="height:90px;background:var(--sea);"></div>
+            <div class="funnel-count">6.102</div>
+            <div class="funnel-label">Deudor<br>notificado</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-bar" style="height:70px;background:var(--success);"></div>
+            <div class="funnel-count">3.471</div>
+            <div class="funnel-label">Embargo<br>trabado</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-bar" style="height:40px;background:#5a7a3d;"></div>
+            <div class="funnel-count">1.622</div>
+            <div class="funnel-label">Sentencia</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-bar" style="height:25px;background:var(--coal);"></div>
+            <div class="funnel-count">729</div>
+            <div class="funnel-label">Liquidaci&oacute;n<br>/ Remate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="chart-grid">
+        <div class="chart-card">
+          <h5>Causas nuevas por mes</h5>
+          <canvas id="chart-monthly"></canvas>
+        </div>
+        <div class="chart-card">
+          <h5>Distribuci&oacute;n por tribunal (Top 10)</h5>
+          <canvas id="chart-tribunales"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">04</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 5 — DASHBOARD: ESTUDIOS               -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--frost" style="padding:48px;">
+  <div class="section-number">05</div>
+  <h4 style="margin-bottom:8px;">Rendimiento de Estudios</h4>
+  <h3 style="margin-bottom:4px;">Eval&uacute;e a sus proveedores legales con datos objetivos</h3>
+
+  <div class="dashboard-frame">
+    <div class="dashboard-topbar">
+      <div class="logo">Vitor<i>ia</i></div>
+      <div style="display:flex;gap:32px;align-items:center;">
+        <span style="font-size:13px;color:var(--pewter);">Dashboard Judicial</span>
+        <span style="font-size:13px;color:var(--copper-light);">Estudios</span>
+        <span style="font-size:13px;color:var(--pewter);">Causas</span>
+        <span style="font-size:13px;color:var(--pewter);">Alertas</span>
+      </div>
+      <div class="user">R. Mardones &bull; L&iacute;der BCI</div>
+    </div>
+    <div class="dashboard-body">
+      <!-- Estudios Table -->
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Estudio jur&iacute;dico</th>
+            <th>Causas activas</th>
+            <th>D&iacute;as prom. a embargo</th>
+            <th>Tasa de embargo</th>
+            <th>Causas estancadas</th>
+            <th>Rendimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;">Barros &amp; Silva Abogados</td>
+            <td class="mono">8.432</td>
+            <td class="mono">42 d&iacute;as</td>
+            <td class="mono">44.2%</td>
+            <td class="mono">8.1%</td>
+            <td><span class="badge badge--success">Alto</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">Estudio Jur&iacute;dico Vald&eacute;s</td>
+            <td class="mono">6.815</td>
+            <td class="mono">48 d&iacute;as</td>
+            <td class="mono">38.7%</td>
+            <td class="mono">11.3%</td>
+            <td><span class="badge badge--sea">Medio</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">C&aacute;rdenas, Mu&ntilde;oz &amp; Asociados</td>
+            <td class="mono">7.241</td>
+            <td class="mono">55 d&iacute;as</td>
+            <td class="mono">35.1%</td>
+            <td class="mono">14.6%</td>
+            <td><span class="badge badge--warning">Bajo</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">Cobranzas Legales del Pac&iacute;fico</td>
+            <td class="mono">5.920</td>
+            <td class="mono">61 d&iacute;as</td>
+            <td class="mono">31.4%</td>
+            <td class="mono">18.2%</td>
+            <td><span class="badge badge--error">Cr&iacute;tico</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">Ram&iacute;rez &amp; Fuentes</td>
+            <td class="mono">5.810</td>
+            <td class="mono">45 d&iacute;as</td>
+            <td class="mono">41.8%</td>
+            <td class="mono">9.7%</td>
+            <td><span class="badge badge--success">Alto</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="chart-grid" style="margin-top:24px;">
+        <div class="chart-card">
+          <h5>Tasa de embargo por estudio</h5>
+          <canvas id="chart-estudios-embargo"></canvas>
+        </div>
+        <div class="chart-card">
+          <h5>Velocidad promedio (d&iacute;as a embargo)</h5>
+          <canvas id="chart-estudios-speed"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">05</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 6 — DASHBOARD: FINANCIAL              -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--frost" style="padding:48px;">
+  <div class="section-number">06</div>
+  <h4 style="margin-bottom:8px;">Etapa 2 &mdash; Visibilidad Financiera</h4>
+  <h3 style="margin-bottom:4px;">Cu&aacute;nta plata hay en cada etapa &mdash; y cu&aacute;nto puede recuperar</h3>
+
+  <div class="dashboard-frame">
+    <div class="dashboard-topbar">
+      <div class="logo">Vitor<i>ia</i></div>
+      <div style="display:flex;gap:32px;align-items:center;">
+        <span style="font-size:13px;color:var(--copper-light);">Vista Financiera</span>
+        <span style="font-size:13px;color:var(--pewter);">Provisionamiento</span>
+        <span style="font-size:13px;color:var(--pewter);">Recupero</span>
+      </div>
+      <div class="user">R. Mardones &bull; L&iacute;der BCI</div>
+    </div>
+    <div class="dashboard-body">
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-label">Monto total en juicio</div>
+          <div class="kpi-value">$68.4B</div>
+          <div class="kpi-change" style="color:var(--slate);">CLP en cartera judicial activa</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Recupero esperado (modelo)</div>
+          <div class="kpi-value">$12.1B</div>
+          <div class="kpi-change up">17.7% estimado con visibilidad</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">En riesgo de prescripci&oacute;n</div>
+          <div class="kpi-value">$3.2B</div>
+          <div class="kpi-change down">847 causas &gt;2 a&ntilde;os sin movimiento</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Potencial de mejora anual</div>
+          <div class="kpi-value">$1.8B</div>
+          <div class="kpi-change up">Optimizando asignaci&oacute;n + seguimiento</div>
+        </div>
+      </div>
+
+      <div class="chart-grid">
+        <div class="chart-card chart-card-full">
+          <h5>Monto en cartera por etapa procesal (MM CLP)</h5>
+          <canvas id="chart-financial" style="max-height:280px;"></canvas>
+        </div>
+      </div>
+
+      <!-- Provisioning comparison -->
+      <div style="background:var(--snow);border:1px solid var(--mist);border-radius:8px;padding:24px;margin-top:24px;">
+        <h5 style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--slate);margin-bottom:16px;">Provisionamiento: CMF est&aacute;ndar vs. Vitoria</h5>
+        <table class="data-table" style="margin-top:0;">
+          <thead>
+            <tr>
+              <th>Tramo de mora</th>
+              <th>Provisi&oacute;n CMF</th>
+              <th>Provisi&oacute;n Vitoria (ajustada)</th>
+              <th>Diferencia potencial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>90&ndash;119 d&iacute;as</td>
+              <td class="mono">25&ndash;35%</td>
+              <td class="mono" style="color:var(--success);">18&ndash;32% <span style="font-size:11px;color:var(--pewter);">(seg&uacute;n embargo)</span></td>
+              <td class="mono" style="color:var(--success);">Liberaci&oacute;n de provisiones</td>
+            </tr>
+            <tr>
+              <td>120&ndash;179 d&iacute;as</td>
+              <td class="mono">50&ndash;65%</td>
+              <td class="mono" style="color:var(--success);">35&ndash;60% <span style="font-size:11px;color:var(--pewter);">(seg&uacute;n etapa real)</span></td>
+              <td class="mono" style="color:var(--success);">Mayor precisi&oacute;n</td>
+            </tr>
+            <tr>
+              <td>180+ d&iacute;as</td>
+              <td class="mono">80&ndash;100%</td>
+              <td class="mono" style="color:var(--copper);">45&ndash;100% <span style="font-size:11px;color:var(--pewter);">(causa en remate vs. sin notificar)</span></td>
+              <td class="mono" style="color:var(--success);">Diferenciaci&oacute;n real</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">06</div>
+</section>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 7 — ROADMAP                           -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--dark">
+  <div class="section-number">07</div>
+  <h4>Hoja de Ruta</h4>
+  <div class="copper-line"></div>
+  <h2>Cuatro etapas, valor desde el minuto 1</h2>
+  <p style="max-width:680px;margin-top:12px;">Cada etapa entrega valor aut&oacute;nomo. No necesita completar la siguiente para capturar retorno.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-title" style="color:var(--frost);">Etapa 1</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-title" style="color:var(--copper-light);font-size:14px;">Dashboard Judicial</div>
+      <div class="timeline-desc">Visibilidad completa de todas las causas con datos p&uacute;blicos. Sin integraci&oacute;n t&eacute;cnica.</div>
+      <div style="margin-top:12px;"><span class="badge badge--success">Listo para arrancar</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-title" style="color:var(--frost);">Etapa 2</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-title" style="color:var(--copper-light);font-size:14px;">Visibilidad Financiera</div>
+      <div class="timeline-desc">Monto por etapa, esperanza de recupero, provisionamiento din&aacute;mico por estado real.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-title" style="color:var(--frost);">Etapa 3</div>
+      <div class="timeline-dot future"></div>
+      <div class="timeline-title" style="color:var(--copper-light);font-size:14px;">Benchmarking</div>
+      <div class="timeline-desc">Compare su rendimiento contra Falabella, Ripley, CMR, BancoEstado con datos p&uacute;blicos.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-title" style="color:var(--frost);">Etapa 4</div>
+      <div class="timeline-dot future"></div>
+      <div class="timeline-title" style="color:var(--copper-light);font-size:14px;">Gesti&oacute;n Completa</div>
+      <div class="timeline-desc">Automatizaci&oacute;n end-to-end: generaci&oacute;n de demandas, seguimiento, optimizaci&oacute;n de cartera.</div>
+    </div>
+  </div>
+  <div class="slide-number">07</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 8 — SHORT-TERM vs LONG-TERM          -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--light">
+  <div class="section-number">08</div>
+  <h4>Visi&oacute;n</h4>
+  <div class="copper-line"></div>
+  <h2>Del dashboard a la gesti&oacute;n completa</h2>
+
+  <div class="two-col" style="margin-top:48px;">
+    <div>
+      <h3 style="color:var(--copper);font-size:20px;font-family:var(--font-sans);font-weight:600;margin-bottom:24px;">Corto plazo: Visualizaci&oacute;n</h3>
+      <ul class="feature-list">
+        <li><span class="check">&#10003;</span> Dashboard de cartera judicial en tiempo real</li>
+        <li><span class="check">&#10003;</span> Ranking de estudios jur&iacute;dicos por rendimiento</li>
+        <li><span class="check">&#10003;</span> Alertas de causas estancadas o en riesgo</li>
+        <li><span class="check">&#10003;</span> Distribuci&oacute;n geogr&aacute;fica y por tribunal</li>
+        <li><span class="check">&#10003;</span> Provisionamiento ajustado por etapa real</li>
+        <li><span class="check">&#10003;</span> Benchmarking competitivo con datos p&uacute;blicos</li>
+      </ul>
+      <p style="margin-top:24px;font-size:14px;color:var(--pewter);">
+        <strong style="color:var(--coal);">Requisito de BCI:</strong> Solo una lista de RUTs de sus estudios jur&iacute;dicos.
+      </p>
+    </div>
+    <div>
+      <h3 style="color:var(--sea);font-size:20px;font-family:var(--font-sans);font-weight:600;margin-bottom:24px;">Largo plazo: Gesti&oacute;n end-to-end</h3>
+      <ul class="feature-list">
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Generaci&oacute;n autom&aacute;tica de demandas judiciales</li>
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Procesamiento inteligente de pagar&eacute;s y mutuos con IA</li>
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Asignaci&oacute;n &oacute;ptima de causas a estudios</li>
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Predicci&oacute;n de probabilidad de recupero por causa</li>
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Automatizaci&oacute;n del seguimiento procesal completo</li>
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Modelo de pricing por caso resuelto</li>
+      </ul>
+      <p style="margin-top:24px;font-size:14px;color:var(--pewter);">
+        <strong style="color:var(--coal);">Vitoria ya opera esto</strong> para 3 estudios jur&iacute;dicos con miles de causas activas.
+      </p>
+    </div>
+  </div>
+  <div class="slide-number">08</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 9 — CTA / CLOSE                      -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--dark cta-slide">
+  <div class="logo" style="position:absolute;top:48px;left:96px;font-size:24px;color:var(--frost);">Vitor<i>ia</i></div>
+  <h4>Siguiente paso</h4>
+  <div class="copper-line"></div>
+  <h1 style="color:var(--frost);">Convirtamos la cobranza <br>en una <span style="color:var(--copper-light);font-style:italic;">ventaja competitiva</span></h1>
+  <p style="color:var(--silver);max-width:500px;margin:0 auto;">Agendemos una sesi&oacute;n para definir el alcance del piloto y los primeros datos a extraer.</p>
+
+  <div class="cta-contacts">
+    <div class="contact-card">
+      <div class="name">Fernando Salinas</div>
+      <div class="role">CEO &amp; Cofundador</div>
+      <a class="email" href="mailto:fernando@usevitoria.com">fernando@usevitoria.com</a>
+    </div>
+    <div class="contact-card">
+      <div class="name">Rafael Hevia</div>
+      <div class="role">Gerente Comercial &amp; Cofundador</div>
+      <a class="email" href="mailto:rafa@usevitoria.com">rafa@usevitoria.com</a>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-size:12px;color:var(--pewter);">
+    www.usevitoria.com &bull; Confidencial &bull; Abril 2026
+  </div>
+  <div class="slide-number">09</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- CHARTS                                       -->
+<!-- ════════════════════════════════════════════ -->
+<script>
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#7a8291';
+Chart.defaults.plugins.legend.display = false;
+
+// Monthly cases chart
+new Chart(document.getElementById('chart-monthly'), {
+  type: 'bar',
+  data: {
+    labels: ['Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic', 'Ene', 'Feb', 'Mar'],
+    datasets: [{
+      data: [980, 1120, 1050, 1240, 1180, 1310, 890, 1060, 1150, 1240],
+      backgroundColor: '#b5704d',
+      borderRadius: 4,
+      barThickness: 28
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        grid: { color: '#eef0f2' },
+        ticks: { callback: function(v) { return v.toLocaleString(); } }
+      },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// Tribunales chart
+new Chart(document.getElementById('chart-tribunales'), {
+  type: 'bar',
+  data: {
+    labels: ['1er Juzgado', '2do Juzgado', '3er Juzgado', '5to Juzgado', '7mo Juzgado', '10mo Juzgado', '12vo Juzgado', '15vo Juzgado', '20vo Juzgado', '25vo Juzgado'],
+    datasets: [{
+      data: [4210, 3880, 3640, 3420, 3180, 2950, 2780, 2540, 2310, 2080],
+      backgroundColor: '#3a6678',
+      borderRadius: 4,
+      barThickness: 20
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: { color: '#eef0f2' },
+        ticks: { callback: function(v) { return v.toLocaleString(); } }
+      },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+// Estudios embargo rate
+new Chart(document.getElementById('chart-estudios-embargo'), {
+  type: 'bar',
+  data: {
+    labels: ['Barros & Silva', 'Ramirez & F.', 'Valdes', 'Cardenas & M.', 'Cobranzas LP'],
+    datasets: [{
+      data: [44.2, 41.8, 38.7, 35.1, 31.4],
+      backgroundColor: ['#3d7a5a', '#3d7a5a', '#3a6678', '#8a7030', '#944040'],
+      borderRadius: 4,
+      barThickness: 32
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        grid: { color: '#eef0f2' },
+        ticks: { callback: function(v) { return v + '%'; } },
+        min: 0, max: 55
+      },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// Estudios speed
+new Chart(document.getElementById('chart-estudios-speed'), {
+  type: 'bar',
+  data: {
+    labels: ['Barros & Silva', 'Ramirez & F.', 'Valdes', 'Cardenas & M.', 'Cobranzas LP'],
+    datasets: [{
+      data: [42, 45, 48, 55, 61],
+      backgroundColor: ['#3d7a5a', '#3d7a5a', '#3a6678', '#8a7030', '#944040'],
+      borderRadius: 4,
+      barThickness: 32
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        grid: { color: '#eef0f2' },
+        ticks: { callback: function(v) { return v + ' dias'; } },
+        min: 0
+      },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// Financial chart
+new Chart(document.getElementById('chart-financial'), {
+  type: 'bar',
+  data: {
+    labels: ['Demanda presentada', 'Mandamiento', 'Notificado', 'Embargo trabado', 'Sentencia', 'Liquidacion'],
+    datasets: [
+      {
+        label: 'Monto en etapa (MM CLP)',
+        data: [22400, 18200, 12800, 8600, 4100, 2300],
+        backgroundColor: ['#b5704d', '#8f5636', '#3a6678', '#3d7a5a', '#5a7a3d', '#1c2127'],
+        borderRadius: 4,
+        barThickness: 48
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return '$' + ctx.parsed.y.toLocaleString() + ' MM CLP'; }
+        }
+      }
+    },
+    scales: {
+      y: {
+        grid: { color: '#eef0f2' },
+        ticks: { callback: function(v) { return '$' + (v/1000).toFixed(0) + 'B'; } }
+      },
+      x: { grid: { display: false } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
