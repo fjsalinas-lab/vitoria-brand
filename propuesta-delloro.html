@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitoria &mdash; Propuesta Dell&rsquo;Oro Abogados</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coal: #1c2127;
+  --coal-soft: #2e333a;
+  --slate: #4a5260;
+  --pewter: #7a8291;
+  --silver: #b0b5be;
+  --mist: #d9dce1;
+  --frost: #eef0f2;
+  --snow: #f8f9fa;
+  --paper: #fdfdfb;
+  --copper: #b5704d;
+  --copper-deep: #8f5636;
+  --copper-light: #d4956e;
+  --copper-glow: rgba(181,112,77,0.10);
+  --copper-subtle: rgba(181,112,77,0.05);
+  --sea: #3a6678;
+  --sea-soft: rgba(58,102,120,0.10);
+  --success: #3d7a5a;
+  --success-soft: rgba(61,122,90,0.10);
+  --error: #944040;
+  --error-soft: rgba(148,64,64,0.10);
+  --warning: #8a7030;
+  --warning-soft: rgba(138,112,48,0.10);
+  --font-serif: 'Libre Baskerville', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  color: var(--coal);
+  background: var(--coal);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Slide System */
+.slide {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 96px;
+  position: relative;
+  overflow: hidden;
+}
+.slide--dark { background: var(--coal); color: var(--frost); }
+.slide--light { background: var(--paper); color: var(--coal); }
+.slide--frost { background: var(--frost); color: var(--coal); }
+
+/* Typography */
+h1 {
+  font-family: var(--font-serif);
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+h2 {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+h3 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+h4 {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--copper);
+}
+p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--slate);
+}
+.slide--dark p { color: var(--silver); }
+.slide--dark h4 { color: var(--copper-light); }
+
+.copper-line { width: 48px; height: 1px; background: var(--copper); margin: 24px 0; }
+
+.logo { font-family: var(--font-serif); font-size: 28px; letter-spacing: -0.01em; }
+.logo i { font-style: italic; }
+
+/* Cover */
+.cover {
+  justify-content: flex-end;
+  padding-bottom: 120px;
+  background: linear-gradient(165deg, #1c2127 0%, #252a31 40%, #2e333a 100%);
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(181,112,77,0.06) 0%, transparent 70%);
+}
+.cover .logo { font-size: 24px; color: var(--frost); position: absolute; top: 48px; left: 96px; }
+.cover .confidential {
+  position: absolute; top: 52px; right: 96px;
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--pewter);
+}
+.cover h1 { color: var(--frost); font-size: 64px; max-width: 800px; margin-bottom: 24px; }
+.cover h1 em { font-style: italic; color: var(--copper-light); }
+.cover .subtitle { font-size: 20px; color: var(--pewter); max-width: 600px; line-height: 1.6; }
+.cover .meta { position: absolute; bottom: 48px; left: 96px; font-size: 14px; color: var(--pewter); }
+.cover .meta span { margin-right: 32px; }
+
+.section-number { font-family: var(--font-mono); font-size: 13px; color: var(--copper); letter-spacing: 0.05em; margin-bottom: 12px; }
+
+/* Stats Row */
+.stats-row { display: flex; gap: 48px; margin: 48px 0; }
+.stat { flex: 1; }
+.stat-value { font-family: var(--font-mono); font-size: 48px; font-weight: 500; color: var(--copper); line-height: 1; margin-bottom: 8px; }
+.slide--light .stat-value { color: var(--coal); }
+.stat-label { font-size: 14px; color: var(--pewter); line-height: 1.5; }
+
+/* Pain Points */
+.pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+.pain-card { background: var(--coal-soft); border-radius: 10px; padding: 32px; border-left: 3px solid var(--copper); }
+.pain-card h3 { font-family: var(--font-sans); font-size: 17px; font-weight: 600; color: var(--frost); margin-bottom: 12px; }
+.pain-card p { font-size: 15px; color: var(--silver); line-height: 1.6; }
+
+/* Dashboard Mockup */
+.dashboard-frame {
+  background: var(--paper);
+  border-radius: 12px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+  overflow: hidden;
+  margin-top: 32px;
+}
+.dashboard-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; background: var(--coal); color: var(--frost);
+}
+.dashboard-topbar .logo { font-size: 20px; }
+.dashboard-topbar .user { font-size: 13px; color: var(--pewter); }
+.dashboard-body { padding: 32px; }
+
+/* KPI Cards */
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+.kpi-card { background: var(--snow); border: 1px solid var(--mist); border-radius: 8px; padding: 20px; }
+.kpi-card .kpi-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pewter); margin-bottom: 8px; }
+.kpi-card .kpi-value { font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: var(--coal); line-height: 1; }
+.kpi-card .kpi-change { font-size: 12px; margin-top: 6px; }
+.kpi-change.up { color: var(--success); }
+.kpi-change.down { color: var(--error); }
+
+/* Table */
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 16px; }
+.data-table th {
+  font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--pewter); text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--mist);
+}
+.data-table td { padding: 14px 16px; border-bottom: 1px solid var(--frost); color: var(--coal); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table .mono { font-family: var(--font-mono); font-size: 13px; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.badge--success { background: var(--success-soft); color: var(--success); }
+.badge--warning { background: var(--warning-soft); color: var(--warning); }
+.badge--error { background: var(--error-soft); color: var(--error); }
+.badge--sea { background: var(--sea-soft); color: var(--sea); }
+.badge--copper { background: var(--copper-glow); color: var(--copper); }
+
+/* Timeline */
+.timeline { display: flex; gap: 0; margin: 48px 0 24px; position: relative; }
+.timeline::before { content: ''; position: absolute; top: 28px; left: 0; right: 0; height: 2px; background: var(--mist); }
+.slide--dark .timeline::before { background: var(--coal-soft); }
+.timeline-item { flex: 1; text-align: center; position: relative; padding: 0 16px; }
+.timeline-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--copper); margin: 22px auto; position: relative; z-index: 1; }
+.timeline-dot.future { background: var(--mist); border: 2px solid var(--copper); }
+.slide--dark .timeline-dot.future { background: var(--coal-soft); }
+.timeline-title { font-weight: 600; font-size: 15px; margin-bottom: 8px; }
+.timeline-desc { font-size: 13px; color: var(--pewter); line-height: 1.5; }
+
+/* Two-Col Layout */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+/* Feature List */
+.feature-list { list-style: none; margin-top: 24px; }
+.feature-list li {
+  padding: 12px 0; border-bottom: 1px solid var(--frost);
+  font-size: 16px; color: var(--slate); display: flex; align-items: flex-start; gap: 12px;
+}
+.slide--dark .feature-list li { border-bottom-color: rgba(255,255,255,0.06); color: var(--silver); }
+.feature-list .check { color: var(--copper); font-weight: 700; font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+/* Impact Grid */
+.impact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 48px; }
+.impact-card {
+  background: rgba(181,112,77,0.05); border: 1px solid rgba(181,112,77,0.15);
+  border-radius: 10px; padding: 32px; text-align: center;
+}
+.impact-card .stat-value { font-size: 40px; color: var(--copper); }
+.impact-card p { font-size: 15px; color: var(--slate); margin-top: 8px; }
+
+/* CTA Slide */
+.cta-slide { text-align: center; justify-content: center; align-items: center; }
+.cta-slide h1 { max-width: 700px; margin-bottom: 24px; }
+.cta-slide .copper-line { margin: 24px auto; }
+.cta-contacts { display: flex; gap: 64px; justify-content: center; margin-top: 48px; }
+.contact-card { text-align: center; }
+.contact-card .name { font-weight: 600; font-size: 16px; color: var(--frost); }
+.contact-card .role { font-size: 13px; color: var(--pewter); margin-top: 4px; }
+.contact-card .email { font-size: 14px; color: var(--copper-light); margin-top: 8px; text-decoration: none; }
+
+.slide-number { position: absolute; bottom: 32px; right: 48px; font-family: var(--font-mono); font-size: 12px; color: var(--pewter); }
+
+/* Excel Mockup */
+.excel-frame {
+  background: var(--paper);
+  border-radius: 12px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+  overflow: hidden;
+  margin-top: 24px;
+}
+.excel-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 24px; background: var(--snow); border-bottom: 1px solid var(--mist);
+}
+.excel-header .icon { font-size: 20px; }
+.excel-header .filename { font-size: 14px; font-weight: 600; color: var(--coal); }
+.excel-header .badge-upload { margin-left: auto; }
+
+.excel-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.excel-table th {
+  background: var(--frost); font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--pewter); padding: 10px 14px; text-align: left;
+  border-bottom: 2px solid var(--mist);
+}
+.excel-table td { padding: 10px 14px; border-bottom: 1px solid var(--frost); color: var(--coal); font-family: var(--font-mono); font-size: 12px; }
+.excel-table tr.row-ok td { background: rgba(61,122,90,0.03); }
+.excel-table tr.row-warn td { background: rgba(138,112,48,0.06); }
+.excel-table tr.row-error td { background: rgba(148,64,64,0.06); }
+.cell-warn { color: var(--warning); font-weight: 600; }
+.cell-error { color: var(--error); font-weight: 600; }
+.cell-ok { color: var(--success); }
+
+/* Alert Cards */
+.alert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.alert-card {
+  border-radius: 8px; padding: 16px 20px; display: flex; align-items: flex-start; gap: 12px;
+}
+.alert-card--error { background: var(--error-soft); border-left: 3px solid var(--error); }
+.alert-card--warning { background: var(--warning-soft); border-left: 3px solid var(--warning); }
+.alert-card--success { background: var(--success-soft); border-left: 3px solid var(--success); }
+.alert-card--info { background: var(--sea-soft); border-left: 3px solid var(--sea); }
+.alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.alert-text { font-size: 13px; line-height: 1.5; color: var(--coal); }
+.alert-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+
+/* Pricing cards */
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+.pricing-card {
+  border-radius: 12px; padding: 40px; position: relative; overflow: hidden;
+}
+.pricing-card--standard { background: var(--paper); border: 1px solid var(--mist); }
+.pricing-card--highlight {
+  background: linear-gradient(135deg, var(--coal) 0%, var(--coal-soft) 100%);
+  border: 1px solid rgba(181,112,77,0.3);
+}
+.pricing-card--highlight * { color: var(--frost); }
+.pricing-card--highlight p { color: var(--silver); }
+.pricing-card--highlight .pricing-price { color: var(--copper-light); }
+.pricing-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pewter); margin-bottom: 8px; }
+.pricing-name { font-family: var(--font-serif); font-size: 24px; margin-bottom: 16px; }
+.pricing-price { font-family: var(--font-mono); font-size: 44px; font-weight: 500; color: var(--copper); line-height: 1; margin-bottom: 4px; }
+.pricing-unit { font-size: 14px; color: var(--pewter); margin-bottom: 24px; }
+.pricing-features { list-style: none; }
+.pricing-features li { padding: 8px 0; font-size: 15px; color: var(--slate); display: flex; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--frost); }
+.pricing-card--highlight .pricing-features li { border-bottom-color: rgba(255,255,255,0.06); color: var(--silver); }
+.pricing-features .check { color: var(--copper); font-weight: 700; flex-shrink: 0; }
+.pricing-ribbon {
+  position: absolute; top: 20px; right: -30px; background: var(--copper);
+  color: white; font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.1em; padding: 6px 40px; transform: rotate(45deg);
+}
+
+/* Comparison Table */
+.comparison-row { display: grid; grid-template-columns: 200px 1fr 1fr; gap: 0; border-bottom: 1px solid var(--frost); }
+.slide--dark .comparison-row { border-bottom-color: rgba(255,255,255,0.06); }
+.comparison-row > div { padding: 16px 20px; font-size: 15px; }
+.comparison-header {
+  font-weight: 600; font-size: 12px !important; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--pewter) !important; border-bottom: 2px solid var(--mist) !important;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .slide { padding: 48px; }
+  h1 { font-size: 40px; } h2 { font-size: 32px; }
+  .cover h1 { font-size: 44px; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .pain-grid { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; gap: 32px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .stats-row { flex-wrap: wrap; gap: 24px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .alert-grid { grid-template-columns: 1fr; }
+}
+
+/* Print / PDF */
+@media print {
+  .slide { page-break-after: always; min-height: 100vh; break-inside: avoid; }
+  body { background: white; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 1 — COVER                             -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide cover slide--dark">
+  <div class="logo">Vitor<i>ia</i></div>
+  <div class="confidential">Confidencial</div>
+  <h4>Propuesta para Dell&rsquo;Oro Abogados</h4>
+  <div class="copper-line"></div>
+  <h1>Escalen su operaci&oacute;n<br>sin sumar <em>headcount</em></h1>
+  <p class="subtitle">Automatizamos la generaci&oacute;n de demandas de pagar&eacute; automotriz desde el Excel de la automotora hasta el ingreso al Poder Judicial &mdash; con alertas inteligentes y cero errores.</p>
+  <div class="meta">
+    <span>Abril 2026</span>
+    <span>Para: Pablo Engdahl &amp; equipo operativo</span>
+  </div>
+  <div class="slide-number">01</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 2 — WHY DELL'ORO                      -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--dark">
+  <div class="section-number">02</div>
+  <h4>Entendemos su operaci&oacute;n</h4>
+  <div class="copper-line"></div>
+  <h2>Dell&rsquo;Oro procesa <em style="color:var(--copper-light);font-style:italic;">+700 causas</em><br>automotrices al mes</h2>
+  <p style="max-width:680px;margin-top:16px;">
+    Con clientes como Santander Consumer, Porsche, OLX Financial y Forum, su &aacute;rea automotriz es una m&aacute;quina de alto volumen. Pero cada demanda todav&iacute;a pasa por un proceso manual que limita cu&aacute;nto pueden crecer.
+  </p>
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-value">700+</div>
+      <div class="stat-label">Causas de pagar&eacute; automotriz<br>gestionadas por mes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">10</div>
+      <div class="stat-label">Personas en el equipo de<br>redacci&oacute;n e ingreso de demandas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">20+</div>
+      <div class="stat-label">Mandantes activos entre<br>bancos, automotoras y financieras</div>
+    </div>
+  </div>
+  <div class="slide-number">02</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 3 — PAIN POINTS                       -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--dark">
+  <div class="section-number">03</div>
+  <h4>Los cuellos de botella</h4>
+  <div class="copper-line"></div>
+  <h2>Cuatro fricciones que frenan<br>el crecimiento de Dell&rsquo;Oro</h2>
+
+  <div class="pain-grid">
+    <div class="pain-card">
+      <h3>Mapeo manual de Excel a plantilla</h3>
+      <p>Cada automotora env&iacute;a un Excel con datos del deudor, montos y veh&iacute;culo. Hoy ese Excel se mapea manualmente a plantillas de demanda &mdash; un proceso repetitivo que consume horas y es propenso a errores.</p>
+    </div>
+    <div class="pain-card">
+      <h3>Sin validaci&oacute;n previa de datos</h3>
+      <p>Cuando una automotora env&iacute;a datos incompletos o con errores (RUT malo, montos que no cuadran, fechas inv&aacute;lidas), el equipo lo descubre tarde &mdash; a veces cuando la demanda ya fue ingresada.</p>
+    </div>
+    <div class="pain-card">
+      <h3>Escalabilidad limitada</h3>
+      <p>Tomar m&aacute;s causas = contratar m&aacute;s personas. El equipo de Hugo Rivas no puede duplicar su capacidad sin duplicar su dotaci&oacute;n. Cada nuevo mandante automotriz suma carga operativa lineal.</p>
+    </div>
+    <div class="pain-card">
+      <h3>Carga de documentos y causas</h3>
+      <p>El sistema actual de carga autom&aacute;tica al Poder Judicial no funciona bien. Parte del ingreso sigue siendo manual, lo que retrasa el ciclo completo de cada demanda.</p>
+    </div>
+  </div>
+  <div class="slide-number">03</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 4 — THE SOLUTION                      -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--light">
+  <div class="section-number">04</div>
+  <h4>Nuestra propuesta</h4>
+  <div class="copper-line"></div>
+  <h2>De Excel a demanda ingresada,<br>en minutos</h2>
+  <p style="max-width:680px;margin-top:16px;">
+    Vitoria toma el Excel que les env&iacute;a la automotora, valida los datos autom&aacute;ticamente, genera las demandas en el formato que Dell&rsquo;Oro necesita, y facilita el ingreso masivo al Poder Judicial.
+  </p>
+
+  <div class="two-col" style="margin-top:48px;">
+    <div>
+      <h3 style="color:var(--copper);font-size:20px;font-family:var(--font-sans);font-weight:600;margin-bottom:24px;">Lo que hacemos hoy</h3>
+      <ul class="feature-list">
+        <li><span class="check">&#10003;</span> Carga masiva de Excel con datos de automotoras</li>
+        <li><span class="check">&#10003;</span> Validaci&oacute;n autom&aacute;tica de datos (RUT, montos, fechas, cuotas)</li>
+        <li><span class="check">&#10003;</span> Alertas inteligentes antes de generar la demanda</li>
+        <li><span class="check">&#10003;</span> Generaci&oacute;n autom&aacute;tica de demandas de pagar&eacute;</li>
+        <li><span class="check">&#10003;</span> Seguimiento de causas v&iacute;a Poder Judicial</li>
+        <li><span class="check">&#10003;</span> Reportes de estado por mandante</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--sea);font-size:20px;font-family:var(--font-sans);font-weight:600;margin-bottom:24px;">Lo que implementamos juntos</h3>
+      <ul class="feature-list">
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Formato custom de demanda Dell&rsquo;Oro</li>
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Mapeo espec&iacute;fico por automotora (cada Excel distinto)</li>
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Integraci&oacute;n con flujo de carga al Poder Judicial</li>
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Automatizaci&oacute;n de respuestas y escritos</li>
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Dashboard de gesti&oacute;n para mandantes</li>
+        <li><span class="check" style="color:var(--sea);">&#8594;</span> Alertas de plazos, causas estancadas y vencimientos</li>
+      </ul>
+      <p style="margin-top:24px;font-size:14px;color:var(--pewter);">
+        <strong style="color:var(--coal);">Ya en producci&oacute;n</strong> con otros estudios que procesan demandas automotrices.
+      </p>
+    </div>
+  </div>
+  <div class="slide-number">04</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 5 — MOCKUP: EXCEL UPLOAD              -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--frost" style="padding:48px;">
+  <div class="section-number">05</div>
+  <h4 style="margin-bottom:8px;">Carga masiva de Excel</h4>
+  <h3 style="margin-bottom:4px;">As&iacute; se ver&iacute;a una carga de demandas automotrices</h3>
+
+  <div class="dashboard-frame">
+    <div class="dashboard-topbar">
+      <div class="logo">Vitor<i>ia</i></div>
+      <div style="display:flex;gap:32px;align-items:center;">
+        <span style="font-size:13px;color:var(--copper-light);">Carga Masiva</span>
+        <span style="font-size:13px;color:var(--pewter);">Causas</span>
+        <span style="font-size:13px;color:var(--pewter);">Seguimiento</span>
+        <span style="font-size:13px;color:var(--pewter);">Alertas</span>
+      </div>
+      <div class="user">Dell&rsquo;Oro Abogados</div>
+    </div>
+    <div class="dashboard-body">
+      <!-- KPI Row for upload -->
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-label">Demandas en lote</div>
+          <div class="kpi-value">142</div>
+          <div class="kpi-change up">Santander Consumer &mdash; Abril 2026</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Validadas OK</div>
+          <div class="kpi-value" style="color:var(--success);">128</div>
+          <div class="kpi-change up">90.1% listas para generar</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Con observaciones</div>
+          <div class="kpi-value" style="color:var(--warning);">11</div>
+          <div class="kpi-change" style="color:var(--warning);">Requieren revisi&oacute;n manual</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Con errores cr&iacute;ticos</div>
+          <div class="kpi-value" style="color:var(--error);">3</div>
+          <div class="kpi-change down">Datos faltantes o inv&aacute;lidos</div>
+        </div>
+      </div>
+
+      <!-- Excel Preview -->
+      <div class="excel-frame" style="margin-top:0;">
+        <div class="excel-header">
+          <span class="icon">&#128196;</span>
+          <span class="filename">Santander_Consumer_Abril_2026.xlsx</span>
+          <span class="badge badge--success badge-upload">Cargado</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="excel-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>RUT Deudor</th>
+                <th>Nombre</th>
+                <th>Patente</th>
+                <th>Marca/Modelo</th>
+                <th>Monto Deuda</th>
+                <th>Cuotas Impagas</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="row-ok">
+                <td>1</td>
+                <td>12.345.678-9</td>
+                <td>P&eacute;rez L&oacute;pez, Juan</td>
+                <td>RKXT-12</td>
+                <td>Toyota Corolla 2023</td>
+                <td>$4.280.000</td>
+                <td>6</td>
+                <td><span class="badge badge--success">&#10003; OK</span></td>
+              </tr>
+              <tr class="row-ok">
+                <td>2</td>
+                <td>9.876.543-2</td>
+                <td>Garc&iacute;a Muñoz, Mar&iacute;a</td>
+                <td>HGTY-45</td>
+                <td>Hyundai Tucson 2024</td>
+                <td>$6.120.000</td>
+                <td>4</td>
+                <td><span class="badge badge--success">&#10003; OK</span></td>
+              </tr>
+              <tr class="row-warn">
+                <td>3</td>
+                <td>15.234.567-K</td>
+                <td>Rodr&iacute;guez Soto, Carlos</td>
+                <td>PLMN-78</td>
+                <td>Kia Sportage 2022</td>
+                <td class="cell-warn">$0</td>
+                <td>8</td>
+                <td><span class="badge badge--warning">&#9888; Monto</span></td>
+              </tr>
+              <tr class="row-ok">
+                <td>4</td>
+                <td>18.765.432-1</td>
+                <td>Fern&aacute;ndez Vega, Ana</td>
+                <td>WCVB-33</td>
+                <td>Suzuki Swift 2023</td>
+                <td>$3.450.000</td>
+                <td>5</td>
+                <td><span class="badge badge--success">&#10003; OK</span></td>
+              </tr>
+              <tr class="row-error">
+                <td>5</td>
+                <td class="cell-error">1.234.567</td>
+                <td>Mart&iacute;nez &mdash;</td>
+                <td>QWER-90</td>
+                <td>Nissan Kicks 2024</td>
+                <td>$5.890.000</td>
+                <td>3</td>
+                <td><span class="badge badge--error">&#10007; RUT</span></td>
+              </tr>
+              <tr class="row-ok">
+                <td>6</td>
+                <td>14.567.890-3</td>
+                <td>Vargas Pinto, Diego</td>
+                <td>LKJH-56</td>
+                <td>Chevrolet Onix 2023</td>
+                <td>$2.980.000</td>
+                <td>7</td>
+                <td><span class="badge badge--success">&#10003; OK</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div class="alert-grid">
+        <div class="alert-card alert-card--error">
+          <div class="alert-icon">&#10007;</div>
+          <div class="alert-text">
+            <strong>RUT inv&aacute;lido &mdash; Fila 5</strong>
+            &ldquo;1.234.567&rdquo; no tiene d&iacute;gito verificador. Verificar con Santander Consumer antes de generar demanda.
+          </div>
+        </div>
+        <div class="alert-card alert-card--warning">
+          <div class="alert-icon">&#9888;</div>
+          <div class="alert-text">
+            <strong>Monto en $0 &mdash; Fila 3</strong>
+            Deuda registrada como $0 para Rodr&iacute;guez Soto. Posible error en el archivo fuente. Revisar columna F.
+          </div>
+        </div>
+        <div class="alert-card alert-card--success">
+          <div class="alert-icon">&#10003;</div>
+          <div class="alert-text">
+            <strong>128 demandas listas</strong>
+            90.1% del lote validado correctamente. Puede generar las demandas con un clic.
+          </div>
+        </div>
+        <div class="alert-card alert-card--info">
+          <div class="alert-icon">&#8505;</div>
+          <div class="alert-text">
+            <strong>Duplicado potencial &mdash; Fila 11</strong>
+            &ldquo;P&eacute;rez L&oacute;pez, Juan&rdquo; ya tiene una causa activa (ROL C-4521-2026). Verificar si es nueva demanda o duplicado.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">05</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 6 — MOCKUP: CASE TRACKING             -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--frost" style="padding:48px;">
+  <div class="section-number">06</div>
+  <h4 style="margin-bottom:8px;">Seguimiento + Alertas Inteligentes</h4>
+  <h3 style="margin-bottom:4px;">Control total de sus causas &mdash; sin buscarlo manualmente</h3>
+
+  <div class="dashboard-frame">
+    <div class="dashboard-topbar">
+      <div class="logo">Vitor<i>ia</i></div>
+      <div style="display:flex;gap:32px;align-items:center;">
+        <span style="font-size:13px;color:var(--pewter);">Carga Masiva</span>
+        <span style="font-size:13px;color:var(--pewter);">Causas</span>
+        <span style="font-size:13px;color:var(--copper-light);">Seguimiento</span>
+        <span style="font-size:13px;color:var(--pewter);">Alertas</span>
+      </div>
+      <div class="user">Dell&rsquo;Oro Abogados</div>
+    </div>
+    <div class="dashboard-body">
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-label">Causas activas</div>
+          <div class="kpi-value">743</div>
+          <div class="kpi-change up">+86 nuevas este mes</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Pendientes notificaci&oacute;n</div>
+          <div class="kpi-value">124</div>
+          <div class="kpi-change" style="color:var(--slate);">Esperando receptor judicial</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Alertas activas</div>
+          <div class="kpi-value" style="color:var(--warning);">18</div>
+          <div class="kpi-change" style="color:var(--warning);">Requieren atenci&oacute;n esta semana</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Causas resueltas (mes)</div>
+          <div class="kpi-value" style="color:var(--success);">47</div>
+          <div class="kpi-change up">Pago total o acuerdo</div>
+        </div>
+      </div>
+
+      <!-- Cases Table -->
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ROL</th>
+            <th>Deudor</th>
+            <th>Mandante</th>
+            <th>Monto</th>
+            <th>Estado</th>
+            <th>&Uacute;ltima actuaci&oacute;n</th>
+            <th>Alerta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono">C-1234-2026</td>
+            <td>P&eacute;rez L&oacute;pez, Juan</td>
+            <td>Santander</td>
+            <td class="mono">$4.280.000</td>
+            <td><span class="badge badge--success">Notificado</span></td>
+            <td style="font-size:13px;color:var(--pewter);">08/04 &mdash; Receptor certific&oacute;</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="mono">C-892-2026</td>
+            <td>Mu&ntilde;oz Parra, Roberto</td>
+            <td>Porsche</td>
+            <td class="mono">$12.450.000</td>
+            <td><span class="badge badge--sea">Mandamiento</span></td>
+            <td style="font-size:13px;color:var(--pewter);">05/04 &mdash; Desp. mandamiento</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="mono">C-567-2026</td>
+            <td>Soto Arriagada, Claudia</td>
+            <td>OLX Financial</td>
+            <td class="mono">$3.670.000</td>
+            <td><span class="badge badge--warning">Estancada</span></td>
+            <td style="font-size:13px;color:var(--pewter);">12/02 &mdash; Sin movimiento</td>
+            <td><span class="badge badge--error">55 d&iacute;as</span></td>
+          </tr>
+          <tr>
+            <td class="mono">C-2045-2026</td>
+            <td>Gonz&aacute;lez Vera, Felipe</td>
+            <td>Forum</td>
+            <td class="mono">$5.120.000</td>
+            <td><span class="badge badge--copper">Embargo</span></td>
+            <td style="font-size:13px;color:var(--pewter);">09/04 &mdash; Embargo trabado</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="mono">C-1789-2025</td>
+            <td>Herrera D&iacute;az, Marcelo</td>
+            <td>GMF</td>
+            <td class="mono">$8.900.000</td>
+            <td><span class="badge badge--warning">Estancada</span></td>
+            <td style="font-size:13px;color:var(--pewter);">20/12 &mdash; Sin movimiento</td>
+            <td><span class="badge badge--error">111 d&iacute;as</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Smart Alerts -->
+      <div style="margin-top:24px;">
+        <h5 style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--slate);margin-bottom:12px;">Alertas inteligentes activas</h5>
+        <div class="alert-grid">
+          <div class="alert-card alert-card--error">
+            <div class="alert-icon">&#9200;</div>
+            <div class="alert-text">
+              <strong>3 causas pr&oacute;ximas a prescripci&oacute;n</strong>
+              ROL C-1789-2025 y 2 m&aacute;s llevan +90 d&iacute;as sin movimiento. Riesgo de abandono procesal.
+            </div>
+          </div>
+          <div class="alert-card alert-card--warning">
+            <div class="alert-icon">&#128221;</div>
+            <div class="alert-text">
+              <strong>Respuesta de demandado en 5 causas</strong>
+              Se detectaron escritos de oposici&oacute;n. Requieren preparar r&eacute;plica dentro de plazo.
+            </div>
+          </div>
+          <div class="alert-card alert-card--success">
+            <div class="alert-icon">&#127919;</div>
+            <div class="alert-text">
+              <strong>12 causas listas para liquidaci&oacute;n</strong>
+              Embargo trabado y sentencia firme. Puede solicitar liquidaci&oacute;n y remate.
+            </div>
+          </div>
+          <div class="alert-card alert-card--info">
+            <div class="alert-icon">&#128200;</div>
+            <div class="alert-text">
+              <strong>Reporte semanal Santander Consumer</strong>
+              142 causas activas, 12 resueltas este mes. Tasa de &eacute;xito: 34%. Listo para enviar al mandante.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">06</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 7 — PARTNERSHIP MODEL                 -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--dark">
+  <div class="section-number">07</div>
+  <h4>El modelo</h4>
+  <div class="copper-line"></div>
+  <h2>No es un software que les entregamos.<br>Es un <em style="color:var(--copper-light);font-style:italic;">partnership</em> donde crecemos juntos.</h2>
+  <p style="max-width:680px;margin-top:16px;">
+    Ya trabajamos con otros estudios procesando demandas automotrices. Cada mejora que desarrollamos con un cliente, beneficia a todos. Pero adem&aacute;s, nos adaptamos a su forma de trabajar.
+  </p>
+
+  <div class="two-col" style="margin-top:48px;">
+    <div>
+      <h3 style="color:var(--copper-light);font-size:18px;font-family:var(--font-sans);font-weight:600;margin-bottom:24px;">2 meses de implementaci&oacute;n a medida</h3>
+      <ul class="feature-list">
+        <li><span class="check">&#10003;</span> Nos adaptamos al formato de demanda de Dell&rsquo;Oro</li>
+        <li><span class="check">&#10003;</span> Mapeamos cada Excel de cada automotora</li>
+        <li><span class="check">&#10003;</span> Configuramos alertas seg&uacute;n sus reglas de negocio</li>
+        <li><span class="check">&#10003;</span> Integramos con su flujo actual de trabajo</li>
+        <li><span class="check">&#10003;</span> Sin costo de implementaci&oacute;n</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--copper-light);font-size:18px;font-family:var(--font-sans);font-weight:600;margin-bottom:24px;">Reuni&oacute;n quincenal de producto</h3>
+      <ul class="feature-list">
+        <li><span class="check">&#10003;</span> Revisamos c&oacute;mo va la operaci&oacute;n</li>
+        <li><span class="check">&#10003;</span> Identificamos nuevas oportunidades de automatizaci&oacute;n</li>
+        <li><span class="check">&#10003;</span> Priorizamos juntos qu&eacute; desarrollar</li>
+        <li><span class="check">&#10003;</span> Transparencia total sobre nuestro roadmap</li>
+        <li><span class="check">&#10003;</span> Dell&rsquo;Oro influye en la direcci&oacute;n del producto</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-number">07</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 8 — PRICING                           -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--light">
+  <div class="section-number">08</div>
+  <h4>Pricing</h4>
+  <div class="copper-line"></div>
+  <h2>Precios pensados para una<br>relaci&oacute;n a largo plazo</h2>
+  <p style="max-width:680px;margin-top:16px;">
+    Bajamos nuestros precios est&aacute;ndar porque queremos construir una relaci&oacute;n de largo plazo con Dell&rsquo;Oro. La idea es entrar, demostrar valor, y crecer juntos.
+  </p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card pricing-card--standard">
+      <div class="pricing-label">Mes 1</div>
+      <div class="pricing-name">Piloto</div>
+      <div class="pricing-price">$0</div>
+      <div class="pricing-unit">Sin compromiso de continuidad</div>
+      <ul class="pricing-features">
+        <li><span class="check">&#10003;</span> Acceso completo a la plataforma</li>
+        <li><span class="check">&#10003;</span> Carga masiva de Excel</li>
+        <li><span class="check">&#10003;</span> Generaci&oacute;n de demandas de pagar&eacute;</li>
+        <li><span class="check">&#10003;</span> Alertas inteligentes</li>
+        <li><span class="check">&#10003;</span> Acompa&ntilde;amiento dedicado</li>
+        <li><span class="check">&#10003;</span> Prueben con causas reales</li>
+      </ul>
+    </div>
+    <div class="pricing-card pricing-card--highlight">
+      <div class="pricing-ribbon">Propuesto</div>
+      <div class="pricing-label">Post-piloto</div>
+      <div class="pricing-name">Partnership Dell&rsquo;Oro</div>
+      <div class="pricing-price">7 UF</div>
+      <div class="pricing-unit">mensual + 0,05 UF por demanda</div>
+      <ul class="pricing-features">
+        <li><span class="check">&#10003;</span> Todo lo del piloto, permanente</li>
+        <li><span class="check">&#10003;</span> Formato custom Dell&rsquo;Oro incluido</li>
+        <li><span class="check">&#10003;</span> Seguimiento autom&aacute;tico de causas</li>
+        <li><span class="check">&#10003;</span> Reuni&oacute;n quincenal de producto</li>
+        <li><span class="check">&#10003;</span> 2 meses de implementaci&oacute;n a medida sin costo</li>
+        <li><span class="check">&#10003;</span> Soporte prioritario</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Cost comparison -->
+  <div style="margin-top:48px;">
+    <h4 style="margin-bottom:24px;">Comparaci&oacute;n de costos</h4>
+    <div class="comparison-row comparison-header">
+      <div></div>
+      <div>Equipo manual (10 personas)</div>
+      <div>Vitoria + Dell&rsquo;Oro</div>
+    </div>
+    <div class="comparison-row">
+      <div style="font-weight:600;color:var(--slate);">Costo mensual</div>
+      <div style="color:var(--error);">~$8.000.000+ CLP</div>
+      <div style="color:var(--success);">~$1.590.000 CLP <span style="font-size:12px;color:var(--pewter);">(700 causas)</span></div>
+    </div>
+    <div class="comparison-row">
+      <div style="font-weight:600;color:var(--slate);">Tiempo por lote</div>
+      <div>D&iacute;as</div>
+      <div style="color:var(--success);">Minutos</div>
+    </div>
+    <div class="comparison-row">
+      <div style="font-weight:600;color:var(--slate);">Errores</div>
+      <div>Frecuentes, detecci&oacute;n tard&iacute;a</div>
+      <div style="color:var(--success);">Validaci&oacute;n autom&aacute;tica previa</div>
+    </div>
+    <div class="comparison-row">
+      <div style="font-weight:600;color:var(--slate);">Escalabilidad</div>
+      <div>Lineal (m&aacute;s personas)</div>
+      <div style="color:var(--success);">Inmediata</div>
+    </div>
+    <div class="comparison-row">
+      <div style="font-weight:600;color:var(--slate);">Seguimiento</div>
+      <div>Manual / CRM limitado</div>
+      <div style="color:var(--success);">Autom&aacute;tico + alertas</div>
+    </div>
+    <div class="comparison-row" style="border-bottom:none;">
+      <div style="font-weight:600;color:var(--slate);">Implementaci&oacute;n</div>
+      <div>N/A</div>
+      <div style="color:var(--success);">2 meses gratis, a medida</div>
+    </div>
+  </div>
+  <div class="slide-number">08</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 9 — ROADMAP                           -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--dark">
+  <div class="section-number">09</div>
+  <h4>Hoja de ruta</h4>
+  <div class="copper-line"></div>
+  <h2>Tres etapas, valor desde el minuto 1</h2>
+  <p style="max-width:680px;margin-top:12px;">Cada etapa les entrega valor inmediato. No necesitan esperar a la siguiente para ver resultados.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-title" style="color:var(--frost);">Mes 1</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-title" style="color:var(--copper-light);font-size:14px;">Piloto gratuito</div>
+      <div class="timeline-desc">Carga de Excel, generaci&oacute;n de demandas, alertas b&aacute;sicas. Prueben con un lote real de Santander o Forum.</div>
+      <div style="margin-top:12px;"><span class="badge badge--success">Listo para arrancar</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-title" style="color:var(--frost);">Mes 2&ndash;3</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-title" style="color:var(--copper-light);font-size:14px;">Implementaci&oacute;n a medida</div>
+      <div class="timeline-desc">Formato custom Dell&rsquo;Oro, mapeo por automotora, alertas avanzadas, integraci&oacute;n con flujo de carga PJUD.</div>
+      <div style="margin-top:12px;"><span class="badge badge--sea">Sin costo</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-title" style="color:var(--frost);">Mes 4+</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-title" style="color:var(--copper-light);font-size:14px;">Operaci&oacute;n plena</div>
+      <div class="timeline-desc">Automatizaci&oacute;n de respuestas, reportes a mandantes, seguimiento completo, dashboard de gesti&oacute;n.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-title" style="color:var(--frost);">Futuro</div>
+      <div class="timeline-dot future"></div>
+      <div class="timeline-title" style="color:var(--copper-light);font-size:14px;">Nuevos tipos de causa</div>
+      <div class="timeline-desc">Prendarias, concursales, factoring. Crecemos juntos hacia nuevos tipos de demanda y mandantes.</div>
+    </div>
+  </div>
+  <div class="slide-number">09</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 10 — IMPACT                           -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--light">
+  <div class="section-number">10</div>
+  <h4>Impacto</h4>
+  <div class="copper-line"></div>
+  <h2>Lo que cambia con Vitoria</h2>
+
+  <div class="impact-grid">
+    <div class="impact-card">
+      <div class="stat-value">80%</div>
+      <p>Reducci&oacute;n de tiempo en generaci&oacute;n de demandas</p>
+    </div>
+    <div class="impact-card">
+      <div class="stat-value">0</div>
+      <p>Errores de RUT, montos o datos inv&aacute;lidos que llegan al tribunal</p>
+    </div>
+    <div class="impact-card">
+      <div class="stat-value">2x</div>
+      <p>Capacidad de tomar m&aacute;s causas sin sumar personas al equipo</p>
+    </div>
+  </div>
+
+  <div style="margin-top:48px;background:var(--copper-subtle);border:1px solid rgba(181,112,77,0.15);border-radius:10px;padding:32px;">
+    <h3 style="font-size:20px;font-family:var(--font-sans);font-weight:600;margin-bottom:16px;">La visi&oacute;n para Dell&rsquo;Oro</h3>
+    <p style="font-size:16px;line-height:1.7;">
+      Hoy Dell&rsquo;Oro es l&iacute;der en cobranza automotriz con 20+ mandantes. Con Vitoria, pueden escalar a duplicar ese volumen sin duplicar su equipo. Cada nuevo mandante que sumen se integra r&aacute;pido: solo necesitamos mapear su Excel. Los abogados se dedican a lo que realmente importa &mdash; estrategia procesal, audiencias, negociaci&oacute;n &mdash; mientras la plataforma absorbe todo lo repetitivo.
+    </p>
+    <p style="font-size:16px;line-height:1.7;margin-top:12px;">
+      <strong style="color:var(--copper);">Bajamos los precios para construir una relaci&oacute;n de largo plazo.</strong> La idea es entrar, demostrar que funciona, y crecer juntos. Que cada causa nueva que tomen sea m&aacute;s rentable que la anterior.
+    </p>
+  </div>
+  <div class="slide-number">10</div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SLIDE 11 — CTA                              -->
+<!-- ════════════════════════════════════════════ -->
+<section class="slide slide--dark cta-slide">
+  <div class="logo" style="position:absolute;top:48px;left:96px;font-size:24px;color:var(--frost);">Vitor<i>ia</i></div>
+  <h4>Siguiente paso</h4>
+  <div class="copper-line"></div>
+  <h1 style="color:var(--frost);">Prueben un mes.<br><span style="color:var(--copper-light);font-style:italic;">Sin compromiso.</span></h1>
+  <p style="max-width:520px;text-align:center;margin-top:16px;color:var(--silver);">
+    Solo necesitamos un Excel de ejemplo de una automotora para configurar la prueba. En una semana est&aacute;n operativos.
+  </p>
+
+  <div class="cta-contacts">
+    <div class="contact-card">
+      <div class="name">Fernando Salinas</div>
+      <div class="role">Cofundador &amp; CEO</div>
+      <a class="email" href="mailto:fernando@usevitoria.com">fernando@usevitoria.com</a>
+    </div>
+    <div class="contact-card">
+      <div class="name">Joaqu&iacute;n Ricci</div>
+      <div class="role">Director Comercial</div>
+      <a class="email" href="mailto:joaquin@usevitoria.com">joaquin@usevitoria.com</a>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-size:12px;color:var(--pewter);">
+    www.usevitoria.com &bull; Confidencial &bull; Abril 2026
+  </div>
+  <div class="slide-number">11</div>
+</section>
+
+</body>
+</html>
